@@ -1,0 +1,36 @@
+{
+  "generation_summary": {
+    "timestamp": "20250915_072631",
+    "total_models": 3,
+    "total_chunks": 185,
+    "device_used": "cuda",
+    "models_generated": [
+      "BGE_Large",
+      "E5_Large",
+      "MiniLM_L6"
+    ]
+  },
+  "model_details": {
+    "BGE_Large": {
+      "embedding_dimension": 1024,
+      "embeddings_size_mb": 0.72265625,
+      "model_size_mb": 1278.46484375,
+      "generation_time_seconds": 13.337691307067871,
+      "avg_time_per_embedding_ms": 72.09562868685336
+    },
+    "E5_Large": {
+      "embedding_dimension": 1024,
+      "embeddings_size_mb": 0.72265625,
+      "model_size_mb": 1278.46484375,
+      "generation_time_seconds": 12.814230918884277,
+      "avg_time_per_embedding_ms": 69.26611307505016
+    },
+    "MiniLM_L6": {
+      "embedding_dimension": 384,
+      "embeddings_size_mb": 0.27099609375,
+      "model_size_mb": 86.64404296875,
+      "generation_time_seconds": 0.33490657806396484,
+      "avg_time_per_embedding_ms": 1.810305827372783
+    }
+  }
+}

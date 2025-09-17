@@ -1,0 +1,339 @@
+-- Enable pgvector extension
+CREATE EXTENSION IF NOT EXISTS vector;
+
+-- Main chunks table optimized for JioPay RAG data
+CREATE TABLE IF NOT EXISTS public.jiopay_chunks (
+    id BIGSERIAL PRIMARY KEY,
+    
+    -- Core content fields
+    content TEXT NOT NULL,
+    content_hash TEXT UNIQUE NOT NULL, -- for deduplication
+    
+    -- Source information
+    source_file TEXT NOT NULL,
+    source_type TEXT NOT NULL CHECK (source_type IN ('faq_recursive', 'pdf_recursive', 'web_recursive', 'faq_group', 'faq_topic', 'pdf_section')),
+    source_url TEXT, -- for web content
+    
+    -- Chunking metadata
+    chunk_method TEXT NOT NULL CHECK (chunk_method IN ('recursive', 'semantic', 'structural', 'fixed', 'gemini_llm')),
+    token_count INTEGER NOT NULL,
+    
+    -- Domain-specific fields
+    topic TEXT DEFAULT 'general',
+    faq_count INTEGER DEFAULT 0,
+    is_faq BOOLEAN DEFAULT FALSE,
+    is_pdf BOOLEAN DEFAULT FALSE,
+    is_web BOOLEAN DEFAULT FALSE,
+    
+    -- Embeddings (MiniLM-L6-v2 dimension)
+    embedding VECTOR(384),
+    
+    -- Extended metadata as JSONB
+    metadata JSONB DEFAULT '{}'::jsonb,
+    
+    -- Timestamps
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Indexes for optimal performance
+-- Primary embedding search index (cosine distance)
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_embedding_cosine
+    ON public.jiopay_chunks USING ivfflat (embedding vector_cosine_ops)
+    WITH (lists = 100);
+
+-- Additional embedding index (L2 distance as fallback)
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_embedding_l2
+    ON public.jiopay_chunks USING ivfflat (embedding vector_l2_ops)
+    WITH (lists = 100);
+
+-- Content-based indexes
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_content_hash 
+    ON public.jiopay_chunks (content_hash);
+
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_source_type 
+    ON public.jiopay_chunks (source_type);
+
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_topic 
+    ON public.jiopay_chunks (topic);
+
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_chunk_method 
+    ON public.jiopay_chunks (chunk_method);
+
+-- Boolean indexes for quick filtering
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_is_faq 
+    ON public.jiopay_chunks (is_faq) WHERE is_faq = TRUE;
+
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_is_pdf 
+    ON public.jiopay_chunks (is_pdf) WHERE is_pdf = TRUE;
+
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_is_web 
+    ON public.jiopay_chunks (is_web) WHERE is_web = TRUE;
+
+-- Metadata JSONB index
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_metadata_gin 
+    ON public.jiopay_chunks USING gin (metadata);
+
+-- Full-text search index on content
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_content_fts 
+    ON public.jiopay_chunks USING gin (to_tsvector('english', content));
+
+-- Composite indexes for common query patterns
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_topic_source_type 
+    ON public.jiopay_chunks (topic, source_type);
+
+CREATE INDEX IF NOT EXISTS idx_jiopay_chunks_source_faq 
+    ON public.jiopay_chunks (source_type, is_faq) WHERE is_faq = TRUE;
+
+-- Similarity search function optimized for JioPay
+CREATE OR REPLACE FUNCTION public.jiopay_similarity_search(
+    query_embedding VECTOR(384),
+    match_count INTEGER DEFAULT 5,
+    source_filter TEXT DEFAULT NULL,
+    topic_filter TEXT DEFAULT NULL,
+    content_type_filter TEXT DEFAULT NULL, -- 'faq', 'pdf', 'web'
+    min_similarity FLOAT DEFAULT 0.0,
+    metadata_filter JSONB DEFAULT '{}'::jsonb
+)
+RETURNS TABLE (
+    id BIGINT,
+    content TEXT,
+    source_file TEXT,
+    source_type TEXT,
+    topic TEXT,
+    faq_count INTEGER,
+    token_count INTEGER,
+    chunk_method TEXT,
+    metadata JSONB,
+    similarity FLOAT
+)
+LANGUAGE plpgsql
+STABLE
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        c.id,
+        c.content,
+        c.source_file,
+        c.source_type,
+        c.topic,
+        c.faq_count,
+        c.token_count,
+        c.chunk_method,
+        c.metadata,
+        1 - (c.embedding <=> query_embedding) as similarity
+    FROM public.jiopay_chunks c
+    WHERE 
+        -- Embedding similarity filter
+        (1 - (c.embedding <=> query_embedding)) >= min_similarity
+        -- Source file filter
+        AND (source_filter IS NULL OR c.source_file ILIKE '%' || source_filter || '%')
+        -- Topic filter
+        AND (topic_filter IS NULL OR c.topic = topic_filter)
+        -- Content type filter
+        AND (
+            content_type_filter IS NULL OR
+            (content_type_filter = 'faq' AND c.is_faq = TRUE) OR
+            (content_type_filter = 'pdf' AND c.is_pdf = TRUE) OR
+            (content_type_filter = 'web' AND c.is_web = TRUE)
+        )
+        -- Metadata filter
+        AND (metadata_filter = '{}'::jsonb OR c.metadata @> metadata_filter)
+    ORDER BY c.embedding <=> query_embedding
+    LIMIT match_count;
+END;
+$$;
+
+-- Hybrid search function (combining semantic + keyword search)
+CREATE OR REPLACE FUNCTION public.jiopay_hybrid_search(
+    query_embedding VECTOR(384),
+    query_text TEXT,
+    match_count INTEGER DEFAULT 5,
+    semantic_weight FLOAT DEFAULT 0.7,
+    keyword_weight FLOAT DEFAULT 0.3,
+    topic_filter TEXT DEFAULT NULL
+)
+RETURNS TABLE (
+    id BIGINT,
+    content TEXT,
+    source_file TEXT,
+    source_type TEXT,
+    topic TEXT,
+    token_count INTEGER,
+    combined_score FLOAT,
+    semantic_similarity FLOAT,
+    keyword_rank FLOAT
+)
+LANGUAGE plpgsql
+STABLE
+AS $$
+BEGIN
+    RETURN QUERY
+    WITH semantic_scores AS (
+        SELECT 
+            c.id,
+            c.content,
+            c.source_file,
+            c.source_type,
+            c.topic,
+            c.token_count,
+            1 - (c.embedding <=> query_embedding) as semantic_sim
+        FROM public.jiopay_chunks c
+        WHERE topic_filter IS NULL OR c.topic = topic_filter
+    ),
+    keyword_scores AS (
+        SELECT 
+            c.id,
+            ts_rank(to_tsvector('english', c.content), plainto_tsquery('english', query_text)) as keyword_sim
+        FROM public.jiopay_chunks c
+        WHERE 
+            (topic_filter IS NULL OR c.topic = topic_filter)
+            AND to_tsvector('english', c.content) @@ plainto_tsquery('english', query_text)
+    ),
+    combined AS (
+        SELECT 
+            s.id,
+            s.content,
+            s.source_file,
+            s.source_type,
+            s.topic,
+            s.token_count,
+            s.semantic_sim,
+            COALESCE(k.keyword_sim, 0) as keyword_sim,
+            (semantic_weight * s.semantic_sim + keyword_weight * COALESCE(k.keyword_sim, 0)) as combined_score
+        FROM semantic_scores s
+        LEFT JOIN keyword_scores k ON s.id = k.id
+    )
+    SELECT 
+        c.id,
+        c.content,
+        c.source_file,
+        c.source_type,
+        c.topic,
+        c.token_count,
+        c.combined_score,
+        c.semantic_sim,
+        c.keyword_sim
+    FROM combined c
+    ORDER BY c.combined_score DESC
+    LIMIT match_count;
+END;
+$$;
+
+-- Topic-based search function
+CREATE OR REPLACE FUNCTION public.jiopay_topic_search(
+    query_embedding VECTOR(384),
+    target_topic TEXT,
+    match_count INTEGER DEFAULT 5
+)
+RETURNS TABLE (
+    id BIGINT,
+    content TEXT,
+    source_file TEXT,
+    source_type TEXT,
+    faq_count INTEGER,
+    similarity FLOAT
+)
+LANGUAGE plpgsql
+STABLE
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        c.id,
+        c.content,
+        c.source_file,
+        c.source_type,
+        c.faq_count,
+        1 - (c.embedding <=> query_embedding) as similarity
+    FROM public.jiopay_chunks c
+    WHERE c.topic = target_topic
+    ORDER BY c.embedding <=> query_embedding
+    LIMIT match_count;
+END;
+$$;
+
+-- FAQ-specific search function
+CREATE OR REPLACE FUNCTION public.jiopay_faq_search(
+    query_embedding VECTOR(384),
+    match_count INTEGER DEFAULT 5,
+    min_similarity FLOAT DEFAULT 0.3
+)
+RETURNS TABLE (
+    id BIGINT,
+    content TEXT,
+    source_file TEXT,
+    topic TEXT,
+    faq_count INTEGER,
+    similarity FLOAT
+)
+LANGUAGE plpgsql
+STABLE
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        c.id,
+        c.content,
+        c.source_file,
+        c.topic,
+        c.faq_count,
+        1 - (c.embedding <=> query_embedding) as similarity
+    FROM public.jiopay_chunks c
+    WHERE 
+        c.is_faq = TRUE 
+        AND (1 - (c.embedding <=> query_embedding)) >= min_similarity
+    ORDER BY c.embedding <=> query_embedding
+    LIMIT match_count;
+END;
+$$;
+
+-- Analytics view for monitoring
+CREATE OR REPLACE VIEW public.jiopay_chunk_analytics AS
+SELECT 
+    source_type,
+    topic,
+    chunk_method,
+    COUNT(*) as chunk_count,
+    AVG(token_count) as avg_tokens,
+    MIN(token_count) as min_tokens,
+    MAX(token_count) as max_tokens,
+    SUM(CASE WHEN is_faq THEN 1 ELSE 0 END) as faq_chunks,
+    SUM(CASE WHEN is_pdf THEN 1 ELSE 0 END) as pdf_chunks,
+    SUM(CASE WHEN is_web THEN 1 ELSE 0 END) as web_chunks
+FROM public.jiopay_chunks
+GROUP BY source_type, topic, chunk_method
+ORDER BY chunk_count DESC;
+
+-- Update trigger for updated_at timestamp
+CREATE OR REPLACE FUNCTION public.update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_jiopay_chunks_updated_at 
+    BEFORE UPDATE ON public.jiopay_chunks 
+    FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
+
+-- Row Level Security (RLS) - Optional but recommended
+-- ALTER TABLE public.jiopay_chunks ENABLE ROW LEVEL SECURITY;
+-- 
+-- CREATE POLICY "Enable read access for all users" ON public.jiopay_chunks
+--     FOR SELECT USING (true);
+
+-- Grant permissions
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.jiopay_chunks TO authenticated;
+GRANT USAGE, SELECT ON SEQUENCE public.jiopay_chunks_id_seq TO authenticated;
+GRANT SELECT ON public.jiopay_chunk_analytics TO authenticated;
+
+-- Create a summary of the setup
+SELECT 
+    'JioPay RAG Database Setup Complete!' as status,
+    'Tables: jiopay_chunks' as tables_created,
+    'Functions: 4 search functions' as functions_created,
+    'Indexes: 10+ optimized indexes' as indexes_created,
+    'Ready for MiniLM-L6-v2 embeddings (384d)' as embedding_support;

@@ -1,0 +1,19 @@
+{
+  "model_name": "MiniLM_L6",
+  "embedding_dimension": 384,
+  "total_chunks": 185,
+  "embeddings_size_mb": 0.27099609375,
+  "model_size_mb": 86.64404296875,
+  "model_parameters": 22713216,
+  "generation_time": 0.33490657806396484,
+  "avg_time_per_embedding_ms": 1.810305827372783,
+  "timestamp": "20250915_072631",
+  "device_used": "cuda",
+  "chunk_method": "recursive",
+  "total_original_chunks": 185,
+  "embeddings_shape": [
+    185,
+    384
+  ],
+  "embeddings_dtype": "float32"
+}

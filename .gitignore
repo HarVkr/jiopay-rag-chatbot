@@ -1,0 +1,8 @@
+# Dependencies
+rag_chat/node_modules/
+
+# Next.js
+rag_chat/.next/
+rag_chat/.vercel/
+
+rag_chat/.env.local

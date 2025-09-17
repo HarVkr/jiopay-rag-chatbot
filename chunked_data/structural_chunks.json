@@ -1,0 +1,735 @@
+[
+  {
+    "chunk_id": 0,
+    "text": "Q: How can I create Collect link?\\n\\nA: You can create a Collect link in two ways: via API or via the Dashboard.\n• API: If you have programming knowledge or developer access, you can use the JioPay Business API to generate a Collect link programmatically. We will provide you integration kit.\n• Dashboard: To create a Collect link via the JioPay Dashboard:\n    o  Log in to the JioPay Dashboard.\n    o  Go to the Payment Links section.\n    o  Click on Create Payment Link.\n    o  Fill in the amount and customer details.\n    o  The payment link will be shared via SMS and email.\\n\\nQ: What are the payment modes available via Collect link?\\n\\nA: Payment modes available via a Collect link include Cards, Net banking, Wallets, and UPI. The availability of specific modes depends on the activated payment methods for the Merchant ID (MID).\\n\\nQ: What is the validity of the Collect link?\\n\\nA: The validity of a Collect link is 90 days by default. However, merchants can update the validity by unchecking the default expiry check box & select the validity of the Collect link. Maximum validity is 180 days and minimum can be any period as per their needs.\\n\\nQ: Can I create Bulk Collect links?\\n\\nA: As of now, JioPay does not offer the feature of creating bulk Collect links. However, this is something that they are working on and it is likely to be available in the near future.\\n\\nQ: Is partial payment allowed?\\n\\nA: No, partial payment is not allowed when using a Collect link. The customer can only make a payment for the specific amount mentioned in the generated Collect link. However, this is something that they are working on and it is likely to be available in the near future.\\n\\nQ: Can customer enter the amount?\\n\\nA: No, the customer cannot enter the amount when using a Collect link. The customer can only make a payment for the specific amount mentioned in the generated Collect link.",
+    "source": "faq_topic_collect_links",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "collect_links",
+    "max_tokens": 512,
+    "token_count": 432,
+    "faq_count": 6,
+    "metadata": {
+      "topic": "collect_links",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 1,
+    "text": "Q: What is the JioPay VoiceBox?\\n\\nA: The JioPay VoiceBox is a Voice audio device that provides instant audio confirmation for UPI payments made on the device. It functions as a portable speaker and offers Jio SIM connectivity. Additionally, it has the capability to provide add-on services based on your specific needs.\\n\\nQ: How does the VoiceBox work?\\n\\nA: Once activated, your JioPay VoiceBox will automatically provide instant audio confirmation for UPI payments made via the VoiceBox QR.\nThe device is mapped to your Merchant ID and linked with your bank account.\\n\\nQ: How does JioPay VoiceBox compare with other devices?\\n\\nA: JioPay VoiceBox has some unique features that make it stand out from other devices, such as:\n•  Superior battery life.\n•  Exclusive entertainment content*\n•  Premium device.\n•  Voicephone app to control VoiceBox.\n•  Battery & Network signal indicators.\n•  4G high-speed network connectivity.\n•  Reliable for noisy outdoor use.\n        *TnC apply\\n\\nQ: Is doorstep installation included with the JioPay VoiceBox?\\n\\nA: Yes, doorstep installation is included with the JioPay VoiceBox. When you purchase the device, you can expect the installation process to be convenient and hassle-free. A representative or technician will come to your onboarded location and assist you in setting up the Voice speaker. This ensures that you can use the device without any difficulty or confusion. The doorstep installation service adds convenience and ensures you can enjoy a smooth and seamless setup experience for your JioPay Voicebox.\\n\\nQ: How can I set up the JioPay VoiceBox?\\n\\nA: Assisted activation will be done by the JioPay agent installing the Voice box. \n\nJioPay agent will scan the Voice box Device serial number QR and the UPI ID QR.\n        \nJioPay agent will input the merchant's personal banking UPI ID/scan the UPI QR for one-time payment + monthly payment mandate setup.\n        \nMerchant will receive a notification on his UPI app for authorising the one-time payment + monthly payments.  \n        \nOn successful authorization, one-time payment amount will be debited from the merchant's UPI linked bank account.\n        \nOn one time payment confirmation, Voice box will be activated against the merchant's settlement bank account for payment collection. \n        \nAgent will do a test transaction to verify the setup.",
+    "source": "faq_topic_voicebox",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "voicebox",
+    "max_tokens": 512,
+    "token_count": 509,
+    "faq_count": 5,
+    "metadata": {
+      "topic": "voicebox",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 2,
+    "text": "Q: Can the JioPay VoiceBox be used in noisy environments?\\n\\nA: Yes, the JioPay VoiceBox is designed to provide clear and high-quality audio confirmation for payments even in noisy environments. Its audio output is optimized to deliver loud and audible notifications, ensuring that users can receive payment confirmations and alerts effectively, regardless of background noise. This feature enhances the usability and reliability of the device, allowing users to receive notifications and confirmations without any inconvenience, even in crowded or noisy surroundings.\\n\\nQ: What are some measures to take to keep the voice box in good working condition ?\\n\\nA: Keep the voice box free of dust and dirt.\\n\\nQ: What type of transactions can be supported/voiced out?\\n\\nA: The VoiceBox can support and voice out transactions made through all UPI applications, such as MyJio, BHIM, Google Pay, PhonePe, Paytm, and other supported banks.\\n\\nQ: What type of languages are supported for announcements?\\n\\nA: The VoiceBox initially supports announcements in English and Hindi. However, there are plans to expand language support and include 12 other regional languages in the near future.\\n\\nQ: How do I replay the last transaction on the VoiceBox?\\n\\nA: To replay the last transaction on the VoiceBox, simply press the function button once. This action will trigger the VoiceBox to replay the details of the last transaction.\n        Most recent transaction (in the last 7 days) will be replayed on pressing the function button. If the last transaction was done prior to 7 days, no information will be played out.\\n\\nQ: My VoiceBox is not working, what should I do?\\n\\nA: Try restarting the device using power buttons.\\n\\nQ: How do I power on my VoiceBox and verify it is operational?\\n\\nA: To power on your VoiceBox and verify its operational status, follow these steps: \n\n      1.  Locate the power button on your VoiceBox. \n      \n      2.  Press and hold the power button for a few seconds. \n      \n      3.  Release the power button once you see or hear indications of the device powering on.\\n\\nQ: How can I get an invoice for the payment made?\\n\\nA: You can obtain the invoice for the payment made towards the VoiceBox subscription directly from the JioPay Business app.",
+    "source": "faq_topic_voicebox",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "voicebox",
+    "max_tokens": 512,
+    "token_count": 504,
+    "faq_count": 8,
+    "metadata": {
+      "topic": "voicebox",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 3,
+    "text": "Q: How do I control the volume of the JioPay VoiceBox?\\n\\nA: Check the power indicator LED if the Voice box is powered on.\\n\\nQ: How do I check the battery level of the JioPay VoiceBox?\\n\\nA: Check the power indicator LED if Voice box is powered on.",
+    "source": "faq_topic_voicebox",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "voicebox",
+    "max_tokens": 512,
+    "token_count": 68,
+    "faq_count": 2,
+    "metadata": {
+      "topic": "voicebox",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 4,
+    "text": "Q: How can I generate reports on JioPay business Dashboard?\\n\\nA: All of your transaction/refund/settlement data can be exported as reports in Excel/Text format. You can also download daily/monthly/custom date range report from the Reports section of the Dashboard.\\n\\nQ: What are settlements?\\n\\nA: Settlement is the process through which you receive funds in your bank account for the money collected from your customers for a particular product/service. Settlement frequency may vary based on your agreement with JioPay Business. It is generally processed on T+1* working days (T being the date of capture of payment).\\n\\nQ: How to check settlements in my bank account?\\n\\nA: A Unique Transaction Reference (UTR) number is given by the banking partner for each settlement. UTR can be viewed by clicking on the settlement ID in the section or downloading the settlement report. You can use the UTR number to track the settlement in your bank account.\\n\\nQ: How do I Update settlement bank account number?\\n\\nA: To update your settlement bank account number, email merchant.support@jiopay.in with your registered mobile number and the details of your new bank account. Attach a cancelled cheque as proof. The support team will assist you further.\\n\\nQ: Do I have to do manual settlement for my account every day to get the funds for payments collected by me?\\n\\nA: No, as a JioPay Business merchant, you do not need to manually initiate settlement or batch closure for your account. The process of settling funds for the payments collected by you is automated. The unsettled transactions are automatically settled in your bank account based on your settlement cycle, without the need for any manual intervention from your side.\\n\\nQ: How to check the status of refund?\\n\\nA: You can check the status of the refund under refund tab on dashboard. Refund is successful processed if the refund status is Accepted or Success.\\n\\nQ: What should I do if refund is not credited in my customer’s account?\\n\\nA: If a refund is not credited to your customer's account, please keep the following in mind:\n\n1.  Refund Deduction: The refund amount will be deducted from any pending settlements in your account. If there are no pending settlements, the refund will be on hold.\n        \n2.  Settlement Availability: The refund will be processed when a new payment is received from another customer for an amount equal to or greater than the refund amount.",
+    "source": "faq_topic_settlements",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "settlements",
+    "max_tokens": 512,
+    "token_count": 516,
+    "faq_count": 7,
+    "metadata": {
+      "topic": "settlements",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 5,
+    "text": "Q: Is partial refund allowed in bulk refund?\\n\\nA: Yes, Partial refund is allowed. You can add partial refund amount in the amount section of refund file.\\n\\nQ: How will the settlement happen in case of payment made by customer via DQR?\\n\\nA: T+1 day settlement to RRL settlement account.\\n\\nQ: How to change the settlement account?\\n\\nA: i. Via Chatbot: Go to “Account management menu” -> Select “More about Account management” -> Select “Modify Settlement account” -> Select Request to Update Account Details -> Select the MID -> Attach the Picture of Passbook/Cancelled check -> Submit. A ticket shall be created whose status would be visible in the Ticket Status section in the Chatbot\nii. Via Mail: Send a mail at merchant.support@jiopay.in.  with your MID, Bank Account no., IFSC Code and a Picture of Passbook/Cancelled check. The Subject of the mail should be “Settlement Account Change Request for MID: <Enter MID>”",
+    "source": "faq_topic_settlements",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "settlements",
+    "max_tokens": 512,
+    "token_count": 217,
+    "faq_count": 3,
+    "metadata": {
+      "topic": "settlements",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 6,
+    "text": "Q: I have forgotten my account password. How can I reset it?\\n\\nA: At the time of login to the JioPay Business App/Dashboard, select the 'Forgot password' option and follow the instructions indicated to reset the password.\\n\\nQ: I am unable to login to the App/Dashboard. What can I do?\\n\\nA: If you are unable to log in to the JioPay Business App or Dashboard, you can try the following:\n    1. Check your internet connection: Ensure you have a stable internet connection by switching between Wi-Fi and mobile data.\n    2. Reinstall the app: Uninstall the JioPay Business App and reinstall it to ensure you have the latest version.\n    3. Verify your username and password: Double-check that you are entering the correct credentials. Use the \"Forgot Password\" option if you need to reset your password.\\n\\nQ: Where can I see transaction details in the App/Portal?\\n\\nA: Click on the icon in the top right corner of the App/Portal and select 'Transactions' from the option to see the transaction details.\\n\\nQ: Can I add sub user to JioPay Business?\\n\\nA: Yes, you can add sub-users to your JioPay Business account by following these steps:\n• Go to the \"Settings\" tab in the merchant dashboard.\n• Click on \"User Management\" and provide the necessary details for the new user.\n• Grant appropriate permissions based on their requirements.\n• Click \"Add User\" to complete the process.\n• The new sub-user will receive an invitation to create a password by clicking on the \"Forgot Password\" option on the login page.\\n\\nQ: How can a new sub access merchant Dashboard?\\n\\nA: New sub user need to create a password by clicking on forgot password. Once the password is created, new sub user can login using new password on JioPay login page.\\n\\nQ: Can I create Repeat via dashboard?\\n\\nA: No, currently Repeat is supported via on-demand API.",
+    "source": "faq_topic_app_dashboard",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "app_dashboard",
+    "max_tokens": 512,
+    "token_count": 427,
+    "faq_count": 6,
+    "metadata": {
+      "topic": "app_dashboard",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 7,
+    "text": "Q: How can I pause/stop campaign?\\n\\nA: To pause or stop a campaign in the JioPay dashboard, follow these steps:\n•  Go to the Campaigns section in the JioPay dashboard.\n•  Select the specific Campaign ID that you want to pause or stop.\n•  Choose the option to pause or stop the campaign based on your business requirement.\n•  If you pause a campaign, it can be re-enabled later until its expiry.\n•  If you stop a campaign, it cannot be re-enabled again.\n•  The campaign will be updated and published with the changes.\\n\\nQ: What should I do if I'm not receiving my settlements?\\n\\nA: The settlement cycle is usually T+1* working days (T being the date of capture of payment). In case the settlement has not been credited to your bank account as per your settlement frequency, we recommend you follow the steps mentioned below:  \n \n          •  Login to the JioPay Business App or Dashboard and visit the My Profile section. \n          •  Check if the settlement information on your profile is the same as the one you are checking for the receipt of settlement funds from JioPay.\n          •  If the settlement information on the page is correct, then check your bank account for any credit transaction from 'JioPay' or 'JPSL' or 'Reliance Payment Solutions'. Please don't worry your money is safe with us. If you don't receive your money within two days, kindly contact JioPay Business Merchant support. If the settlement account is different, please send a request to \nmerchant.support@jiopay.in\n for updating the settlement account with the attached cancelled cheque as a proof.",
+    "source": "faq_topic_app_dashboard",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "app_dashboard",
+    "max_tokens": 512,
+    "token_count": 353,
+    "faq_count": 2,
+    "metadata": {
+      "topic": "app_dashboard",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 8,
+    "text": "Q: I believe that I have received partial or incorrect settlement in my account?\\n\\nA: If you believe that you have received a partial or incorrect settlement in your account, please follow these steps to investigate the issue:\n•  Login to the JioPay Business App or Dashboard.\n•  Visit the ‘Transactions’ section on the App, or the ‘Report Section’ on the web Dashboard.\n•  Filter the date of payments for which you have received the incorrect settlement.\n•  Add the amount for all transactions which are tagged as ‘Success’.\n•  Check if the same amount post deducting the transaction processing fees and taxes has been deposited in your linked Bank Account.   \n•  If you have not received the same amount, contact us at \nmerchant.support@jiopay.in\n.\\n\\nQ: How can I issue refunds to my customers for any payments made by them?\\n\\nA: To issue refunds using the JioPay Business App or Dashboard, follow these steps:\n•  Login to the app or dashboard.\n•  Locate the transaction for refund.\n•  Select the transaction and choose \"Refund\".\n•  Enter the refund amount (full or partial).\n•  Confirm the refund request.\\n\\nQ: Do we have a format for bulk refund report?\\n\\nA: Yes, there is particular format for Bulk refund report which you can download from merchant Dashboard. You can go to refund section and click on initiate bulk refund & download the sample file. Any deviation from the standard format will lead to failure of bulk refund.\\n\\nQ: How can I disable SMS notification from dashboard?\\n\\nA: For disabling SMS Notification you can follow below steps.\n•  Go to settings tab & select user management.\n•  Click on Action and select edit permission for whichever user you want to disable notification.\n•  Uncheck the notification permission check box & click on save changes.\n•  Now notification are disable for this users.\\n\\nQ: How can I add new number for SMS from dashboard?\\n\\nA: For adding new number for notification you can follow below steps.\n•  Go to settings tab & select user management.\n•  Click on Add new users.\n•  Enter name, mobile number of the user.\n•  Give notification rights in Access rights & click on add user.\n•  Now new mobile number is added for SMS notification.",
+    "source": "faq_topic_app_dashboard",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "app_dashboard",
+    "max_tokens": 512,
+    "token_count": 485,
+    "faq_count": 5,
+    "metadata": {
+      "topic": "app_dashboard",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 9,
+    "text": "Q: How can I change the language of announcements?\\n\\nA: You can change the supported language of the announcement from the JioPay Business app. You can download the app from Google Play Store: \nJiopay business\n.\\n\\nQ: What all UPI payment applications/options would JioPay DQR support?\\n\\nA: Customer can make payment via any of the UPI applications such as MyJio, PhonePe, GPay, Paytm, etc.",
+    "source": "faq_topic_app_dashboard",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "app_dashboard",
+    "max_tokens": 512,
+    "token_count": 101,
+    "faq_count": 2,
+    "metadata": {
+      "topic": "app_dashboard",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 10,
+    "text": "Q: What is the purpose of the JioPay Business App?\\n\\nA: JioPay Business App is designed for retailers, businessmen or any other service providers to keep track of payments even when on the move. With the JioPay Business app, you can perform payment processing activities like accepting payments, viewing past transactions, issuing refunds, editing your profile and much more.\\n\\nQ: What is JioPay Business Dashboard?\\n\\nA: The JioPay Business Dashboard is a user interface designed for merchants to configure and operate their JioPay Business account. It provides a centralized platform for managing your business and payments. With real-time charts and analytics, the dashboard allows you to track your business performance. You can view detailed reports, monitor transaction history, and analyse payment trends. The JioPay Business Dashboard empowers merchants to make informed decisions and optimize their payment processes. It offers valuable insights and enables better control over operations. By utilizing this user-friendly interface, merchants can effectively manage their JioPay Business account and drive business growth.\\n\\nQ: Can I use Single Collect link to accept payments from multiple customers?\\n\\nA: No, you cannot use a single Collect link to accept payments from multiple customers. A Collect link is typically generated for a specific transaction and is intended to be used by a single customer to make a payment. If you need to accept payments from multiple customers, you will need to generate separate Collect links for each customer.\\n\\nQ: What is the maximum amount for debit without 2FA in subsequent payment?\\n\\nA: As per the RBI (Reserve Bank of India) guidelines, you can debit a customer without the requirement of two-factor authentication (2FA) for subsequent payments up to a maximum amount of ₹15,000/-.\n*Amount subjective to change based on RBI guidelines.\\n\\nQ: How to check ARN for refund?\\n\\nA: There are two ways to check this \n1.  You can check the ARN inside refund history tab on dashboard.\n2.  You can search for the transaction for which refund has been processed. Click on the transaction and you can find refund details at the bottom.",
+    "source": "faq_topic_transactions",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "transactions",
+    "max_tokens": 512,
+    "token_count": 444,
+    "faq_count": 5,
+    "metadata": {
+      "topic": "transactions",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 11,
+    "text": "Q: Can I cancel a refund?\\n\\nA: Once a refund has been processed successfully, it cannot be cancelled. The refunded amount has already been transferred to the customer's account, and the transaction is considered final. It's important to double-check the refund details before initiating the process to ensure accuracy. If you have any concerns or need further assistance, please contact \nmerchant.support@jiopay.in\n.\\n\\nQ: Do you charge for refund?\\n\\nA: We do not charge for refunds. However please note that the processing charges levied by JPSL for the original payment will not be reversed.\\n\\nQ: Can we do bulk refund?\\n\\nA: Yes, you have the option to perform bulk refunds using the JioPay dashboard. You can upload a refund file in the format specified on the dashboard. Once the file is uploaded, the system will process the refunds and provide you with the number of successful and failed refund records.\\n\\nQ: What are the steps for Bulk refund?\\n\\nA: To process bulk refund please follow below steps:\n•  Go to refund section and click on initiate bulk refund & download the sample file.\n•  Mention your Merchant ID in the entity column.\n•  Enter Method type as 211.\n•  Enter transaction ID under original transaction ID.\n•  Enter transaction amount under original transaction amount.\n•  Enter refund amount that has to be processed under amount section.\n•  Save the file with the given naming convention  jfs_yyyymmddhhmmss_mid_recordscount\n      o  jfs is static field.\n      o  yyyymmddhhmmss is year, month, day, hours, min & seconds.\n      o  mid is your merchant ID.\n      o  record count is the refund count.\n      o  Please ensure you follow above steps for successful refund processing.\\n\\nQ: Can we reprocess failed record in bulk refund?\\n\\nA: Yes, if any records in the bulk refund file fail to process successfully, you can reprocess those failed records by uploading a new file with the corrected information. Simply create a new file with the failed refund records, ensuring that it follows the required format, and upload it again through the JioPay dashboard. The system will process the new file separately, allowing you to retry the refund for the failed records. Make sure to address any errors or issues that caused the initial failure to increase the chances of successful processing in the reupload.",
+    "source": "faq_topic_transactions",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "transactions",
+    "max_tokens": 512,
+    "token_count": 508,
+    "faq_count": 5,
+    "metadata": {
+      "topic": "transactions",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 12,
+    "text": "Q: What type of transactions will VoiceBox announce?\\n\\nA: VoiceBox will only announce successful UPI transactions. It will not announce failed or pending transactions.\\n\\nQ: How to initiate refund in normal DQR transactions\\n\\nA: • Store manager to mandatorily raise call log with transaction details [RRN, Amount, Transaction date, MOP=Jiopay UPI DQR] with central refund team - \nARR.Refund@ril.com\n.\n• Refund process is similar to existing process. Refund is processed via central refund team ARR.Refund@ril.com.\n• In case of excess credit, Refund team will process the refund and customer will get the credit after refund initiation in T+2 days.\\n\\nQ: In case of transaction timeout how to check if money is credited or not?\\n\\nA: The store to click on Check Status to understand transaction status. In case, the status is still not confirmed and there is timeout, then merchant should cancel the order and create new order. The customer would have to make the payment again. The earlier payment (if made) would be refunded back to customer.\\n\\nQ: When to use “Cancel” option in check status?\\n\\nA: • This option should be used when the Cashier initiated the payment, but customer has not started payment from his end. Following scenarios to be considered – \n      o  Customer wish to add more products.\n      o  Customer has not started the payment.\n      o  Customer wish to change the MOP.\n      o  Payment failed at customer side, and he wants to change the MOP.\\n\\nQ: When not to use “Cancel” option? Scenarios where cancel option should not be used\\n\\nA: • Payment initiated but it is pending due to network or some other issue. Following scenarios to be considered\n      o  Please wait until it’s either failed or success at customer end.\n      o  Request customer confirmation on transaction before using cancel option.\n      o  Customer side payment is successful and confirmation is not received at RPOS, after 2 mins of timeout.\\n\\nQ: What is the potential earning structure within the JioPay Business Partner Program?\\n\\nA: With the JioPay Business Partner Program, you receive recurring payments based on the number of transactions processed through JioPay Business.",
+    "source": "faq_topic_transactions",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "transactions",
+    "max_tokens": 512,
+    "token_count": 485,
+    "faq_count": 6,
+    "metadata": {
+      "topic": "transactions",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 13,
+    "text": "Q: What are Limitations of being a P2PM Merchant?\\n\\nA: • P2PM merchants have a monthly cumulative Inward UPI Transaction limit of ₹ 1,00,000/- only, for accepting payments. \n• Furthermore, daily limit and transaction limit is kept 25,000/- per day and 10,000/- per transaction only, respectively by NPCI. However, these limits could be revised from time to time as per NPCI instruction.\n• Any more transaction which breaches the above-mentioned respective values won’t be processed by Jiopay and would be declined. In such case customer will not be debited nor will there be any credit to the merchant.\\n\\nQ: What are benefits of becoming a P2M merchant?\\n\\nA: P2M merchants can be able to accept payments with adjustable higher limits on transaction value (Basis the MCC & risk rules applicable to merchant).\\n\\nQ: What if a P2PM Merchant merchants breaches ₹ 1,00,000/- monthly limit?\\n\\nA: • P2PM merchants have a monthly cumulative Inward UPI Transaction limit of ₹ 1,00,000/- only for accepting payments. Any more transaction which breaches this value won’t be processed by Jiopay and would be declined. Thus, such merchants won’t be able to accept payments until next month OR it has upgraded itself to P2M KYC Merchant.\n• However, If the ₹ 1,00,000/- monthly limit is breached for 3 consecutive months, then in that case Jiopay team along with the merchant needs to upgrade such merchant mandatorily to P2M KYC Merchant as per NPCI guidelines. Further transactions could be blocked until the merchant is upgraded to P2M KYC merchant.\\n\\nQ: What is the potential earning structure within the JioPay Business Partner Program?\\n\\nA: With the JioPay Business Partner Program, you receive recurring payments based on the number of transactions processed through JioPay Business.",
+    "source": "faq_topic_transactions",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "transactions",
+    "max_tokens": 512,
+    "token_count": 417,
+    "faq_count": 4,
+    "metadata": {
+      "topic": "transactions",
+      "source_files": [
+        "jiopay_faq_data_final.json",
+        "partner_faq_data.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 14,
+    "text": "Q: What is Repeat?\\n\\nA: Repeat is a billing system that allows consumers to make recurring payments for the usage of services provided by you. It enables automated and regular billing for ongoing services or subscriptions, ensuring a seamless payment experience for your customers. With Repeat, you can streamline your billing process and securely collect payments on a recurring basis.\\n\\nQ: What are the payment methods supported for Repeat?\\n\\nA: Cards and UPI\nThe payment methods supported for repeat payments are cards and UPI (Unified Payments Interface). These widely-used payment options provide convenience and flexibility for customers to make recurring payments for their subscriptions.\\n\\nQ: I want to give my customer a free trial, would that be possible?\\n\\nA: You can offer your customers a free trial using two types of mandate registration:\n•  Standalone: A nominal amount (e.g., ₹2) is deducted and refunded to the customer. After the free trial period, you can start debiting the customer.\n•  Inline: The customer is charged and the subscription starts immediately.\\n\\nQ: Will you be able to manage my subscriptions?\\n\\nA: You will need to manage your subscription plans yourself using the available on-demand APIs provided by JioPay Business. These APIs offer the necessary functionality to create, manage, and handle subscriptions for your customers.\\n\\nQ: What are the charges for the VoiceBox?\\n\\nA: The charges for the VoiceBox include a one-time setup fee that is payable at the time of installation or activation. Additionally, there is a recurring monthly subscription fee for the services provided by the VoiceBox. The monthly subscription fee will be debited from your account.",
+    "source": "faq_topic_repeat_payments",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "repeat_payments",
+    "max_tokens": 512,
+    "token_count": 344,
+    "faq_count": 5,
+    "metadata": {
+      "topic": "repeat_payments",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 15,
+    "text": "Q: How can I create campaign?\\n\\nA: To create a campaign, follow these steps:\n•  Log in to the JioPay dashboard.\n•  Navigate to the Campaigns section in the menu on the left.\n•  Click on \"Create Campaign\" and configure it according to your business requirements.\n•  Once you have set up the campaign, click \"Publish Now\" to make it live.\\n\\nQ: How can I edit campaign?\\n\\nA: To edit a campaign in the JioPay dashboard, follow these steps:\n•  Go to the Campaigns section in the JioPay dashboard.\n•  Select the specific Campaign ID that you want to edit.\n•  Make the required changes in the Offer configuration.\n•  Save the changes.\n•  The campaign will be updated and published with the modified settings.",
+    "source": "faq_topic_campaigns",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "campaigns",
+    "max_tokens": 512,
+    "token_count": 172,
+    "faq_count": 2,
+    "metadata": {
+      "topic": "campaigns",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 16,
+    "text": "Q: Can I block sub user?\\n\\nA: Yes, you can block/edit/delete your sub users by going into user management section inside settings tab.",
+    "source": "faq_topic_user_management",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "user_management",
+    "max_tokens": 512,
+    "token_count": 32,
+    "faq_count": 1,
+    "metadata": {
+      "topic": "user_management",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 17,
+    "text": "Q: Who will send the store manager the JioPay DQR?\\n\\nA: The devices would be dispatched by the local State Digital DC.\\n\\nQ: What if the neighborhood smart point have it and a particular store manager doesn’t have it.\\n\\nA: The store manager should reach out via the RRL team based out of RCP by writing to \nmerchant.support@jiopay.in\n.\\n\\nQ: What if the DQR device is defective?\\n\\nA: The store manager should reach out to the RRL support team or write an email to merchant support [\nmerchant.support@jiopay.in\n] – Please specify the details the store manager needs to include while sending such emails.\\n\\nQ: What if the store manager has received excess or lesser number of devices?\\n\\nA: The store manager would have to share this information with RRL Support team. Accordingly, return or delivery of additional devices would be planned. Please mention the email ids along with the details store manager has to add while sending such emails.\\n\\nQ: Internet connectivity issue or network issues because of which UPI is not working\\n\\nA: Store manager needs to raise with RRL Enterprise IT team: \nRetailit@ril.com\n.\\n\\nQ: What if the DQR is not working after connecting to RPoS Billing System?\\n\\nA: The store manager may reach out to merchant support team \nmerchant.support@jiopay.in\n. Please mention the details store manager has to provide while raising such concerns.",
+    "source": "faq_topic_dqr",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "dqr",
+    "max_tokens": 512,
+    "token_count": 317,
+    "faq_count": 6,
+    "metadata": {
+      "topic": "dqr",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 18,
+    "text": "Q: Why should you consider becoming a part of the JioPay Business Partner program?\\n\\nA: The JioPay Business Partner Program stands as one of the most rewarding B2B programs in India. As a JioPay Business partner, you not only have the opportunity to earn unmatchable commissions but also offer a delightful and convenient digital payments experience for your customers.\\n\\nQ: Can a business that's already registered with JioPay Business also sign up as a partner?\\n\\nA: Absolutely, businesses that are already registered with JioPay Business can certainly extend their engagement by enrolling as partners.\\n\\nQ: Why should you consider becoming a part of the JioPay Business Partner program?\\n\\nA: The JioPay Business Partner Program stands as one of the most rewarding B2B programs in India. As a JioPay Business partner, you not only have the opportunity to earn unmatchable commissions but also offer a delightful and convenient digital payments experience for your customers.\\n\\nQ: Can a business that's already registered with JioPay Business also sign up as a partner?\\n\\nA: Absolutely, businesses that are already registered with JioPay Business can certainly extend their engagement by enrolling as partners.",
+    "source": "faq_topic_partner_program",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "partner_program",
+    "max_tokens": 512,
+    "token_count": 256,
+    "faq_count": 4,
+    "metadata": {
+      "topic": "partner_program",
+      "source_files": [
+        "jiopay_faq_data_final.json",
+        "partner_faq_data.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 19,
+    "text": "Q: What is JioPay Business?\\n\\nA: JioPay Business is a payment aggregator and gateway provided by Jio Payment Solutions Limited (formerly known as Reliance Payment Solutions Limited), a subsidiary of Reliance Industries Limited. It offers merchants and businesses of all sizes simple and self-service products to accept and process payments online and offline from their customers. JioPay Business supports payments through web, mobile, and Point of Sale (POS) systems, making it convenient for merchants to manage transactions. With JioPay Business, businesses can streamline their payment operations and provide a seamless payment experience to their customers.\\n\\nQ: Why is my settlement on hold for some transactions?\\n\\nA: We understand that you would be concerned about the hold on your settlement. We would like to assure you that holds on settlements are a standard practice in the payment processing industry and are put in place to ensure the security and integrity of your transactions.\n\nOur compliance and risk teams monitor the transactions for various risks. These holds are usually temporary and typically last for a few business days while we conduct a thorough review of your transactions. Our teams might reach out to you on your registered email-id/mobile number for certain clarifications. Once a satisfactory response has been received we will release the funds to your account as per the agreed frequency.\\n\\nQ: How do I start using the DQR device for transactions?\\n\\nA: • It is a plug and play device. The store manager would have to connect the USB port of the device to the USB port of the RPoS Billing system.\n• Further, the screen will appear and the store manager would have to do “signout” and “sign in”.\n• After that, the store manager can do a Re1 test transaction and select “JioPay UPI DQR” option at the time of checkout as MOP. The DQR code would then generate instantaneously on the DQR Device. He may then scan and pay using any of the UPI/BHIM applications.\n• In case of any issues, the store manager may connect with RRL Support team or write a mail to \nmerchant.support@jiopay.in\n.",
+    "source": "faq_topic_payment_gateway",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "payment_gateway",
+    "max_tokens": 512,
+    "token_count": 443,
+    "faq_count": 3,
+    "metadata": {
+      "topic": "payment_gateway",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 20,
+    "text": "Q: How can I download the JioPay Business App?\\n\\nA: To download the JioPay Business App, follow these steps:\n    1. Open the Google Play Store app on your phone.\n    2. Search for \"JioPay Business\" and select it.\n    3. Tap \"Install\" to download and install the app.\\n\\nQ: Why My App is crashing on my Phone?\\n\\nA: If the JioPay Business App is crashing on your phone, try the following steps:\n    1. Check your internet connection: Ensure you have a stable internet connection by switching between Wi-Fi and mobile data.\n    2. Delete and reinstall the app: Uninstall the JioPay Business App and reinstall it to get the latest version.\n    3. Check phone software updates: Make sure your phone's software is up to date by checking for available updates.\\n\\nQ: What should a store manager do on receipt of JioPay DQR standee?\\n\\nA: After receipt of device, the store manager is supposed to do the following activity - \n•  He needs to do GRN entry.\n•  Watch DIY Video on device installation.\n•  He should match the devices to billing system – One device per billing system. If mismatch then he should report the same to the RRL support team and his cluster managers.\n•  Connect device to USB port of the billing system, as shown in the video.\n•  Do the “Sign out” and “Sign” in the billing system/RPoS application.\n•  Same step to be followed for each of the billing systems/RPoS application in his store.",
+    "source": "faq_topic_app_usage",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "app_usage",
+    "max_tokens": 512,
+    "token_count": 344,
+    "faq_count": 3,
+    "metadata": {
+      "topic": "app_usage",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 21,
+    "text": "Q: How do I get a new VoiceBox?\\n\\nA: To get a new JioPay VoiceBox, please email \nmerchant.support@jiopay.in\n with details of your contact number, store address. The VoiceBox is currently available for select merchant businesses.",
+    "source": "faq_topic_business_setup",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "business_setup",
+    "max_tokens": 512,
+    "token_count": 57,
+    "faq_count": 1,
+    "metadata": {
+      "topic": "business_setup",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 22,
+    "text": "Q: Can I use any SIM in the VoiceBox?\\n\\nA: The VoiceBox is equipped with a pre-activated Jio SIM, which is specifically designed for use with the device. It cannot be used with other devices, and the VoiceBox does not support other operator SIM cards or Jio SIM cards with voice/data. If you encounter any connectivity-related issues with your VoiceBox, please contact merchant.support@jiopay.in for assistance. They will be able to provide further guidance and support to resolve any connectivity problems you may be facing.\\n\\nQ: What if my VoiceBox is not charging?\\n\\nA: If your VoiceBox is not charging, please ensure that the supplied charger is connected to a power supply and that the USB connector is properly plugged into the VoiceBox. Check for any visible damages or issues with the charger or USB cable. Try using a different power outlet or charger to eliminate any potential problems with the power source. If the issue persists, please contact merchant.support@jiopay.in for further assistance.",
+    "source": "faq_topic_technical_issues",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "technical_issues",
+    "max_tokens": 512,
+    "token_count": 212,
+    "faq_count": 2,
+    "metadata": {
+      "topic": "technical_issues",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 23,
+    "text": "Q: What if I would like to return /replace the VoiceBox?\\n\\nA: If you would like to return/replace the VoiceBox, please contact the JioPay executive or reach out to \nmerchant.support@jiopay.in\n. They will provide you with the necessary instructions and assistance for returns/replacements and cancellation.",
+    "source": "faq_topic_refunds",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "refunds",
+    "max_tokens": 512,
+    "token_count": 69,
+    "faq_count": 1,
+    "metadata": {
+      "topic": "refunds",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 24,
+    "text": "Q: Who are P2PM Merchants?\\n\\nA: • P2PM Merchants are the merchants who are on boarded with ,low KYC details such as Proof of Identification and Address however without Proof of Business (PoB). The following documents are required to onboard as \ni. Aadhar card/DL\nii. Bank Account Details (Penny Drop Verification)\n• Such merchants have a monthly cumulative Inward UPI Transaction limit of ₹ 1,00,000/- only, for accepting payments. Additionally, daily limit and transaction limit is kept 25,000/- per day and 10,000/- per transaction, respectively by NPCI. However, these limits could be revised from time to time as per NPCI instruction.\n• Any more transaction which breaches the above-mentioned respective values won’t be processed by Jiopay and would be declined. In such case customer will not be debited nor will there be any credit to the merchant.\n• Such Merchants can upgrade themselves to P2M merchant on request. However, if any such merchant crosses ₹ 1,00,000/- monthly for 3 consecutive months then Jiopay team will upgrade such merchant mandatorily to P2M subject to the merchant providing documents necessary for P2M specific KYC.\\n\\nQ: How long would it require to become P2M merchant after upgradation request?\\n\\nA: Post Upgradation Request, It would take around 24-48 hours to process the request, subjected to the fulfilment and validity of the documents submitted. Such merchants shall get an alert on Successful KYC upgradation",
+    "source": "faq_topic_kyc_documents",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "kyc_documents",
+    "max_tokens": 512,
+    "token_count": 330,
+    "faq_count": 2,
+    "metadata": {
+      "topic": "kyc_documents",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 25,
+    "text": "Q: What if the device is not turning on ?\\n\\nA: Connect your device to charger and let it charge for 10-15 mins.",
+    "source": "faq_topic_fees_pricing",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "fees_pricing",
+    "max_tokens": 512,
+    "token_count": 32,
+    "faq_count": 1,
+    "metadata": {
+      "topic": "fees_pricing",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 26,
+    "text": "Q: What if device is not getting connected to network ?\\n\\nA: Restart the device using power buttons.\\n\\nQ: Below power LED indications can help you regarding the battery status of the device:\\n\\nA: Charging : RED\\n\\nQ: Will there be any training provided on the usage of DQR?\\n\\nA: • Training on DQR would be a one-time activity and would be communicated to them by their cluster heads or RRL support.\n• However, any feature addition or update on the product would be communicated to them through DIY videos, or store communications by RRL Support team.",
+    "source": "faq_topic_general",
+    "type": "faq_topic",
+    "chunk_method": "structural",
+    "topic": "general",
+    "max_tokens": 512,
+    "token_count": 126,
+    "faq_count": 3,
+    "metadata": {
+      "topic": "general",
+      "source_files": [
+        "jiopay_faq_data_final.json"
+      ]
+    }
+  },
+  {
+    "chunk_id": 27,
+    "text": "Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 Grievance Redressal Policy Jio Payment Solutions Limited (Formerly: Reliance Payment Solutions Limited) Table of Contents 1. INTRODUCTION​ 3 2. SCOPE​ 4 3. OBJECTIVE​ 4 4. KEY DESIGN PRINCIPLES​ 5 5. GRIEVANCE HANDLING & RESOLUTION PROCESS​ 6 6. ROLES & RESPONSIBILITIES FOR GRIEVANCE RESDRESSAL​ 10 7. POLICY REVIEW​ 11 8. REPORTING TO THE BOARD​ 11 9. TRANSPARENCY AND DISCLOSURE​ 11 10. REGULATORY REFERENCES​ 12 ​ Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 1.​INTRODUCTION With the increased adoption of digital payments among the customers and merchants (hereinafter referred to as customers), implementation of robust and effective policies and arrangements for resolution of customer queries, complaints and disputes are of crucial importance for sustaining the trust in payments ecosystem and also for further deepening of digital payments in the country. The overall quality of customer experience and satisfaction with service delivery and the ease of access to and effectiveness of supporting grievance redressal structures and mechanisms reflect",
+    "source": "Grievance-Redressal-Policy.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 512,
+    "metadata": {
+      "source_file": "Grievance-Redressal-Policy.pdf",
+      "pages": 12,
+      "char_count": 19267,
+      "section_title": "Introduction",
+      "sub_chunk": 0
+    }
+  },
+  {
+    "chunk_id": 28,
+    "text": "arrangements for resolution of customer queries, complaints and disputes are of crucial importance for sustaining the trust in payments ecosystem and also for further deepening of digital payments in the country. The overall quality of customer experience and satisfaction with service delivery and the ease of access to and effectiveness of supporting grievance redressal structures and mechanisms reflect an organization’s governance standards and value systems. Therefore, customer service for any organization requires a focused engagement with the customers on an ongoing basis.​ JPSL has adopted the RBI’s Charter of Customer Rights as an intrinsic element in its value system which underpins the entire gamut of its customer engagement. Recognizing the right of the customers to grievance redressal and compensation, JPSL has adopted this Grievance Redressal Policy to provide a framework defining the scope, objectives, key design principles, grievance handling and resolution standards, and internal and external arrangements where the customer can seek effective recourse in the rare event of being dissatisfied with the quality of our products, services or grievance redressal actions.​ JPSL believes in providing quality customer service in a friendly, efficient and helpful manner to create a delightful customer experience. For this purpose, JPSL, has put in place a centralized grievance redressal system that aims to provide satisfactory resolution of every query, request, complaint or feedback in a fair, transparent and unbiased manner. While doing so, JPSL treats the customers with complete dignity, respect and courtesy in their dealings with JPSL. Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 Merchant Partner shall mean a business entity or organization that has agreed to avail payment related services from the Payment Aggregator/JPSL including to accept and process digital payments for goods and services through the JPSL's/ Payment Aggregator's Platform. Consumer shall mean consumer who holds the valid Payment Instrument and makes payment for purchasing the Products from the Merchant Partner utilising",
+    "source": "Grievance-Redressal-Policy.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 514,
+    "metadata": {
+      "source_file": "Grievance-Redressal-Policy.pdf",
+      "pages": 12,
+      "char_count": 19267,
+      "section_title": "Introduction",
+      "sub_chunk": 1
+    }
+  },
+  {
+    "chunk_id": 29,
+    "text": "organization that has agreed to avail payment related services from the Payment Aggregator/JPSL including to accept and process digital payments for goods and services through the JPSL's/ Payment Aggregator's Platform. Consumer shall mean consumer who holds the valid Payment Instrument and makes payment for purchasing the Products from the Merchant Partner utilising the Payment Instrument using the Payment Mechanism through the Merchant Partner Platform; 2.​SCOPE This policy covers all the payment related products and services offered by JPSL to its system participants and clients which are delivered, processed or serviced at/ by any of its offices/outlets/ outsourcing agents in India. This policy shall address the queries, requests, complaints, and feedback of customers and both online and offline Merchant Partners. 3.​OBJECTIVE The grievance redressal policy sets out the framework, systems, operating principles and review mechanism for prompt and satisfactory redressal of grievances/ disputes/ complaints. The grievance redressal policy aims to achieve the following objectives on an ongoing basis: \u0000​ Facilitate fair and timely resolution of customer requests and complaints;​ \u0000​ Ensure unbiased, fair and just treatment to the customers while dealing with their concerns;​ Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 \u0000​ Ensure transparent, courteous and expeditious resolution of customer issues;​ \u0000​ Educate the customers on alternate escalation mechanisms available to them for resolution of their complaints/issues, if they are not satisfied with JPSL response. 4.​KEY DESIGN PRINCIPLES The grievance redressal policy of JPSL is based on following key principles to offer a best-in- class grievance redressal experience to customers: \u0000​ Fairness: Customers are treated in a fair, transparent and unbiased manner with complete dignity, respect and courtesy at all times.​ \u0000​ Quality: Customer queries, requests, complaints,",
+    "source": "Grievance-Redressal-Policy.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 512,
+    "metadata": {
+      "source_file": "Grievance-Redressal-Policy.pdf",
+      "pages": 12,
+      "char_count": 19267,
+      "section_title": "Introduction",
+      "sub_chunk": 2
+    }
+  },
+  {
+    "chunk_id": 30,
+    "text": "L is based on following key principles to offer a best-in- class grievance redressal experience to customers: \u0000​ Fairness: Customers are treated in a fair, transparent and unbiased manner with complete dignity, respect and courtesy at all times.​ \u0000​ Quality: Customer queries, requests, complaints, feedback and disputes are dealt with an open mind and in a timely manner.​ \u0000​ Consistency: Customers are offered a standardized experience at all times irrespective of the size and segment of customer.​ \u0000​ Ownership: Commitment to maintain the highest standard of conduct and professionalism in service delivery.​ \u0000​ Transparency: Upfront disclosure of terms and conditions, timelines, technical and quality specifications, contra-indications, pricing and charges.​ \u0000​ Awareness: Information about various channels available for grievance redressal and the right to approach the nodal officer and Principal Nodal Officer are made publicly available.​ Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 \u0000​ Simplified Process: The grievance redressal system is designed to be customer friendly with an easy grievance tracking mechanism.​ \u0000​ Empowerment: Educating customers on various avenues available to them to escalate grievances, including external bodies (RBI, Banking Ombudsman and The Reserve Bank - Integrated Ombudsman). 5.​GRIEVANCE HANDLING & RESOLUTION PROCESS A. Registration and Tracking of Queries, Requests, Complaints and Feedback: Customers can raise their queries, requests, complaints and feedback (QRCF) to JPSL for deficiency in service related to any of its payment products and services. JPSL will endeavor to provide multiple touch points for the convenience of customers to raise a QRCF. Customers can raise a QRCF either by writing a letter or through an email available on the website. An automated system acknowledges and assigns a",
+    "source": "Grievance-Redressal-Policy.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 512,
+    "metadata": {
+      "source_file": "Grievance-Redressal-Policy.pdf",
+      "pages": 12,
+      "char_count": 19267,
+      "section_title": "Introduction",
+      "sub_chunk": 3
+    }
+  },
+  {
+    "chunk_id": 31,
+    "text": "for deficiency in service related to any of its payment products and services. JPSL will endeavor to provide multiple touch points for the convenience of customers to raise a QRCF. Customers can raise a QRCF either by writing a letter or through an email available on the website. An automated system acknowledges and assigns a unique tracking number to a QRFC received through electronic channels, which is shared with the customer for future reference and monitoring purposes. JPSL has put in place a dedicated and well trained help desk to handle QRCFs received from the customers. The timeframe for resolution of QRCF is communicated by the Helpdesk to the customers through available channels. QRCF is classified based on the voice of the customers. The grievance redressal system implemented by JPSL covers various stages of transaction life cycle, different types of disputes, reason codes, process of dispute resolution, documentation required, escalation in case of unsatisfactory response, roles and responsibilities of various parties to the transaction, TAT for each stage, etc. The outcome of the grievance redressal mechanism is binding on all system participants. Customers may approach any alternative forum, including RBI or Banking Ombudsman or The Reserve Bank - Integrated Ombudsman, for redressal of grievance if not satisfied with the redressal provided by JPSL. Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 B. Customer Complaint Resolution: Customers can reach out to JPSL, issuing bank or Merchant Partner depending on the type of issue, to raise grievances pertaining to Transaction, Service fulfillment or Technology related issues. Mentioned below are grievance scenarios in detail for customer’s reference. \u0000​ Transaction related: ●​ No debit to account: Customer shall reach out to JPSL in case transaction is failing without any debit to account.​ ●​ Debit to account: Customer shall reach out to the issuing bank",
+    "source": "Grievance-Redressal-Policy.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 512,
+    "metadata": {
+      "source_file": "Grievance-Redressal-Policy.pdf",
+      "pages": 12,
+      "char_count": 19267,
+      "section_title": "Introduction",
+      "sub_chunk": 4
+    }
+  },
+  {
+    "chunk_id": 32,
+    "text": "issues. Mentioned below are grievance scenarios in detail for customer’s reference. \u0000​ Transaction related: ●​ No debit to account: Customer shall reach out to JPSL in case transaction is failing without any debit to account.​ ●​ Debit to account: Customer shall reach out to the issuing bank where transaction has been confirmed to be failed by the Merchant Partner, however the customer account has been debited.​ ●​ Refund amount not received: Customer shall reach out to the issuing bank where refund is processed successfully by the Merchant Partner, however customer has not received the amount. \u0000​ Service fulfillment related: ●​ Payment made but issue with service availed: Customer to raise the complaint either with the concerned Merchant Partner or JPSL. \u0000​ Technology related: ●​ System downtime related or unavailability of services.​ ​ Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 C. Merchant Partner Complaint Resolution: ​ Merchant Partners can reach out to JPSL for Transaction related or Technology related issues. Mentioned below are the details about the issues that Merchant Partner can raise with JPSL. \u0000​ Transaction related: ●​ Refunds, transaction failure, transaction processing charges, settlement delay or failure, reconciliation, etc.​ \u0000​ Technology related: ●​ System downtime, Portal issues/crashes, chargeback/dispute related issues, etc. D. Customer Complaint Resolution TAT and Escalation Matrix: JPSL follows the following TAT and escalation matrix for resolution of QRCF:​ \u0000​ Resolution at Level 1: Customers can lodge their queries, requests, complaints and feedback at care@jiopay.in. JPSL endeavors to resolve all queries, requests, complaints and feedback received from the customers promptly and in any case within 10 working days from the date of receipt. In case of card-not-present transactions and UPI P",
+    "source": "Grievance-Redressal-Policy.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 512,
+    "metadata": {
+      "source_file": "Grievance-Redressal-Policy.pdf",
+      "pages": 12,
+      "char_count": 19267,
+      "section_title": "Introduction",
+      "sub_chunk": 5
+    }
+  },
+  {
+    "chunk_id": 33,
+    "text": "Customers can lodge their queries, requests, complaints and feedback at care@jiopay.in. JPSL endeavors to resolve all queries, requests, complaints and feedback received from the customers promptly and in any case within 10 working days from the date of receipt. In case of card-not-present transactions and UPI P2M transactions, where the customer account is debited but confirmation is not received at the merchant end, an auto-reversal is processed within T+5 days. A compensation of ₹100 per day is to be paid to the customer for any delay beyond T+5 days. Merchant Partners can lodge their queries, requests, complaints and feedback at merchant.support@jiopay.in. JPSL endeavors to resolve all queries, requests, complaints and feedback received from the Merchant Partners promptly and in any Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 case within 10 working days from the date of receipt.​ \u0000​ Escalation at Level 2:​ In case of non-redressal of complaint within the specified time period or unsatisfactory resolution at Level 1, customers can raise the case to Nodal Officer by sending an email at nodal.officer@jiopay.in. The Nodal Officer will get back to the customer within 10 working days from the date of escalation.​ \u0000​ Escalation at Level 3: In case of non-redressal of complaint within the specified time period or unsatisfactory resolution at Level 2, customers can raise the case to the Principal Nodal Officer by sending an email at nodal.principal@jiopay.in. The Principal Nodal Officer will get back to the customer within 10 working days from the receipt of the email.​ \u0000​ Escalation at Level 4 :​ If the complaint has not been satisfactorily resolved at previous levels within 30 days, customers can",
+    "source": "Grievance-Redressal-Policy.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 512,
+    "metadata": {
+      "source_file": "Grievance-Redressal-Policy.pdf",
+      "pages": 12,
+      "char_count": 19267,
+      "section_title": "Introduction",
+      "sub_chunk": 6
+    }
+  },
+  {
+    "chunk_id": 34,
+    "text": ".principal@jiopay.in. The Principal Nodal Officer will get back to the customer within 10 working days from the receipt of the email.​ \u0000​ Escalation at Level 4 :​ If the complaint has not been satisfactorily resolved at previous levels within 30 days, customers can reach out to the digital ombudsman Complaint lodging portal of the Ombudsman: https://cms.rbi.org.in/. Complaint lodging portal of the Ombudsman: https://cms.rbi.org.in/ For more details, please refer to the link RBI Ombudsman - https://rbidocs.rbi.org.in/rdocs/content/pdfs/RBIOS2021_121121.pdf The grievance redressal mechanism of JPSL provides for a comprehensive framework for registration, tracking, resolution and analysis of QRCFs, and a robust review mechanism to identify and resolve any gaps in its products, services and processes. Root cause analysis of grievances will be carried out to ensure satisfactory grievance redressal. JPSL follows the turn-around-time for resolution of grievances as prescribed under the RBI guidelines on ‘Harmonisation of Turn Around Time (TAT) and customer compensation for failed transactions using authorised Payment Systems’ dated September 20, 2019. Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 ​ 6.​ROLES & RESPONSIBILITIES FOR GRIEVANCE RESDRESSAL A. Customer: \u0000​ Report the dispute/complaint through available channels (Email, letter) within the prescribed timelines. \u0000​ Provide supporting documents/screenshots/details of the disputed transaction as requested. \u0000​ Cooperate in the resolution process and track the dispute status via the provided channels. \u0000​ Escalate unresolved complaints according to the escalation structure outlined in the policy. B. Merchant: \u0000​ Acknowledge the receipt of the dispute.",
+    "source": "Grievance-Redressal-Policy.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 512,
+    "metadata": {
+      "source_file": "Grievance-Redressal-Policy.pdf",
+      "pages": 12,
+      "char_count": 19267,
+      "section_title": "Introduction",
+      "sub_chunk": 7
+    }
+  },
+  {
+    "chunk_id": 35,
+    "text": "supporting documents/screenshots/details of the disputed transaction as requested. \u0000​ Cooperate in the resolution process and track the dispute status via the provided channels. \u0000​ Escalate unresolved complaints according to the escalation structure outlined in the policy. B. Merchant: \u0000​ Acknowledge the receipt of the dispute. \u0000​ Submit proof of transaction fulfillment (e.g., delivery confirmation, invoice, communication logs). \u0000​ Actively support the dispute investigation and comply with outcomes determined by the Payment Aggregator or relevant authority. \u0000​ If the resolution favors the customer, initiate a refund within the stipulated SLA. C. Payment Aggregator (PA-PG): \u0000​ Act as the coordinating entity between the customer, merchant, and banks. \u0000​ Log and track all complaints with unique IDs, ensure resolution within 10 working days (as per JPSL Policy) unless an extension is necessary due to merchant/bank dependencies. \u0000​ Keep the customer informed at every stage (acknowledgment, resolution, escalation). \u0000​ In the absence of a merchant or bank response, act in the customer's interest in line with regulatory expectations. \u0000​ Maintain records of all disputes and resolutions for a minimum of 5 years.​ Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 D. Bank(s) / Payment Service Providers: \u0000​ Upon request, verify transaction status or authorization logs and share findings with the PA. \u0000​ Support the PA in fund reversals/refunds as per the outcome of the dispute.​ 7.​POLICY REVIEW The grievance redressal policy shall be reviewed on an annual basis and / or change in the regulatory guidelines, for any amendments or updates, to reflect changes in the business strategy or regulatory guidelines impacting the grievance redressal mechanism. Any revision to the policy shall be approved by the Board. As a good governance",
+    "source": "Grievance-Redressal-Policy.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 513,
+    "metadata": {
+      "source_file": "Grievance-Redressal-Policy.pdf",
+      "pages": 12,
+      "char_count": 19267,
+      "section_title": "Introduction",
+      "sub_chunk": 8
+    }
+  },
+  {
+    "chunk_id": 36,
+    "text": "The grievance redressal policy shall be reviewed on an annual basis and / or change in the regulatory guidelines, for any amendments or updates, to reflect changes in the business strategy or regulatory guidelines impacting the grievance redressal mechanism. Any revision to the policy shall be approved by the Board. As a good governance practice, JPSL would endeavor to present a summary of complaints to the Board on a periodic basis (either quarterly or half-yearly). 8.​REPORTING TO THE BOARD An analysis of customer complaints covering types, geography, source, turn-around-time, amount of compensation paid, root cause analysis and corrective action taken including complaints received from the Government, RBI, Banking Ombudsman, The Reserve Bank - Integrated Ombudsman and those escalated to any legal forum will be put up to the Board on a quarterly basis. 9.​TRANSPARENCY AND DISCLOSURE An up to date copy of this policy as approved by the Board of Directors of JPSL, the procedure for filing service/ product related complaints, access to the escalation matrix, contact details of the Nodal Officer, Principal Nodal officer, and The Reserve Bank - Integrated Ombudsman will be published on JPSL’s website.​ Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 10.​ REGULATORY REFERENCES Jio Payment Solutions Ltd. (formerly known as Reliance Payment Solutions Ltd.)​ Regd. Add. - 1st Floor, Building 4NA, Maker Maxity, Bandra Kurla Complex, Bandra (East), Mumbai - 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we",
+    "source": "Grievance-Redressal-Policy.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 512,
+    "metadata": {
+      "source_file": "Grievance-Redressal-Policy.pdf",
+      "pages": 12,
+      "char_count": 19267,
+      "section_title": "Introduction",
+      "sub_chunk": 9
+    }
+  },
+  {
+    "chunk_id": 37,
+    "text": "- 400051 Corp. Add. – 2nd Floor B Wing, Building 25, Dhirubhai Ambani Knowledge City, Kopar Khairane, Navi Mumbai – 400710, India​ +91 22 3511 8600 | www.jiopay.in | we.care@jiopay.in​ CIN: U65923MH2007PLC173923 Sr. No. Guidelines Link 1 RBI ‘Guidelines on Regulation of Payment Aggregators and Payment Gateways’ dated March 17, 2020 (as updated from time to time). ‘Guidelines on Regulation of Payment Aggregators and Payment Gateways’ 2 RBI Guidelines on ‘Harmonisation of Turnaround Time (TAT) and customer compensation for failed transactions using authorized Payment Systems’ dated September 20, 2019. ‘Harmonisation of Turnaround Time (TAT) and customer compensation for failed transactions using authorized Payment Systems’ 3 RBI guidelines on Integrated ombudsman Scheme https://www.rbi.org.in/Scripts/B S_PressReleaseDisplay.aspx?prid =52549",
+    "source": "Grievance-Redressal-Policy.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 233,
+    "metadata": {
+      "source_file": "Grievance-Redressal-Policy.pdf",
+      "pages": 12,
+      "char_count": 19267,
+      "section_title": "Introduction",
+      "sub_chunk": 10
+    }
+  },
+  {
+    "chunk_id": 38,
+    "text": "Restricted Merchant Services and Products List These industries and/or product/service types are restricted. These merchants and/or industries should not be solicited. Restricted Merchants include but are not limited to: • Adult Digital Content • Any merchant business model for products/services that are solely based on guaranteed “rebate”, “refund” or “prize” associated with the sale of those products/services (especially those where the rebate or refund equals or exceeds the product/service purchase price or value). • Any merchant engaged in any illegal activity • Alcoholic beverages (beer, liquor, wine, champagne) • Any merchant selling products or services promising future guaranteed results in general • Anything promoting hate, violence, or intolerance • Pawn Shops • Deceptive and unfair Business Practices. • Collection Agencies engaged in the collection of uncollectible debt as defined by the Associations • Companies involved with chain letters of any type • Fortune Tellers/ Astrologers • Penny auction Merchants • Companies involved with pyramid schemes • Counterfeit Goods • Embargoed Goods (eeas.europa.eu/cfsp/sanctions/docs/measures_en.pdf) • Terrorism individuals and organizations • Travel merchants (without license of National Travel Industry Bonding Organization) • Trade in animals • Bodyparts • E-Currency • Bitcoin sales • Escort Services • Extended Warranty Companies (warranties beyond 1 year) • Financial transactions, such as wire transfers, cash movement or transmitters, money orders, quasi-cash, prepaid gift or credit cards • Firearm, Ammunition, or Weapon sales • Get Rich Quick Schemes • Goods or materials that infringe intellectual property rights • Illegal Drugs or Paraphernalia • Investment Programs or Opportunities • Lifetime Memberships with membership fee exceeding €500.00 • Loan originators • Lotteries Raffles • Mortgage Interest Rate or Payment Reduction Services • Money Service Business: Check Cashiers, Travelers checks, Currency Dealer & Exchanger • Offshore Banking • Payment Aggregators • Sale of real property (land, building, etc.) • Sports Forecasting or Odds Making (prohibited if it involves gambling or wagering) • Football Ticket Sales (ticket sales for UK football matches need special approval due to legal restrictions) • Timeshares • Drugs (controlled substances) • Tobacco and cigarettes /vapes Negative option subscriptions (auto-renew without notice) • Football tickets (Champion’s league, Europa league, World cup, Supercup) • Olympic games tickets • Solar Panel standalone business • Any services which involved an extended fulfillment over 12 months While Mastercard’s full",
+    "source": "restricted_business_list.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 512,
+    "metadata": {
+      "source_file": "restricted_business_list.pdf",
+      "pages": 1,
+      "char_count": 2792,
+      "section_title": "Introduction",
+      "sub_chunk": 0
+    }
+  },
+  {
+    "chunk_id": 39,
+    "text": "substances) • Tobacco and cigarettes /vapes Negative option subscriptions (auto-renew without notice) • Football tickets (Champion’s league, Europa league, World cup, Supercup) • Olympic games tickets • Solar Panel standalone business • Any services which involved an extended fulfillment over 12 months While Mastercard’s full BRAM and GBPP list remains internal only, JPSL effectively mirrors these standards, offering transparency in their policy on its website.",
+    "source": "restricted_business_list.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 92,
+    "metadata": {
+      "source_file": "restricted_business_list.pdf",
+      "pages": 1,
+      "char_count": 2792,
+      "section_title": "Introduction",
+      "sub_chunk": 1
+    }
+  },
+  {
+    "chunk_id": 40,
+    "text": "List of Documents for Sole Proprietorship and Entity 1. List of acceptable KYC Documents as a Proof of identity & Address 1. Sole-Proprietorship Merchant – Owner / Authorised signatories documents 2. Entity (Partnership / Limited Company / Private Company / Trust / LLP / HUF) Merchant – Authorised signatory documents required for all authorised signatories. Documents in the Name of Owner / Authorized Signatory –Any one Mandatory (Front with Name & Photo + Back with Address)  Aadhaar card copy (Redacts or blacks out Copy)  Passport copy  Driver's Licence copy (Smart Card issued in the state of Maharashtra is accepted)  Voter's ID copy 2. List of acceptable Proof of Business documents Documents issued in the name of Entity / Firm / Company – Any One Mandatory  FSSAI Licence or FDA Certificate  Shop & Establishment Certificate  GST Certificate  License issued by Drug Controller Authority  Certificate issued by Gram Panchayat / Block Development Authorities. (The certificate must be duly stamped, stating the details of existence of the firm)  Certificate issued for Registration / Trade License by Local / State / Central Govt.  Certificate issued for Registration / Trade License by Govt. Agency / SEBI / IRDA / ICAI / ICSI / ICWAI in the name of the entity / firm  Registration Certificate issued by Excise / Customs department  Regional Transport Office Permit / Registration Certificate  VAT Certificate (only applicable for businesses with product types not covered under GST i.e., Petroleum products & Alcohol sellers) (Not applicable for Kirana / Departmental Stores / Supermarket / General Store etc.)  Registration Certificate issued by Professional Tax authorities  Importer Exporter Certificate (IEC)  Trademark Registration Certificate  Factory Registration Certificate in the name of the Entity  Permanent Small-Scale Industries (SSI) Certificate (not Provisional) Duly stamped and signed by issuing authority.  Udyam Aadhar / Udyam Registration Certificate (URC) issued by the Government  Shop and Establishment Intimation receipt along with Contact Point Verification Note - Documents not acceptable - and Weight & Measurement certificate. 3. Settlement Bank Account Documents Documents issued by the bank – Any one mandatory  Cancelled Cheque  Bank Verification Letter (not older than 3 months old as on date of onboarding for physical merchants)  Passbook or Bank Statement",
+    "source": "list_of_documents_for_sole_proprietorship_and-entity.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 512,
+    "metadata": {
+      "source_file": "list_of_documents_for_sole_proprietorship_and-entity.pdf",
+      "pages": 4,
+      "char_count": 5024,
+      "section_title": "Introduction",
+      "sub_chunk": 0
+    }
+  },
+  {
+    "chunk_id": 41,
+    "text": "Note - Documents not acceptable - and Weight & Measurement certificate. 3. Settlement Bank Account Documents Documents issued by the bank – Any one mandatory  Cancelled Cheque  Bank Verification Letter (not older than 3 months old as on date of onboarding for physical merchants)  Passbook or Bank Statement (transaction entries not more than 3 months old as on date of onboarding; details should be pre-printed in bank statement) 4. Photo of the owner / authorised signatory, shop inside photo with stock & shop outside photo with display name 1. Passport size photo of shop owner/authorised signatory is mandatory (for MAF/Paper on-boarding) for validation with the photo on POI/POA 2. The below are applicable for physical merchants on-boarded through DKYC  Two Clear Photos of shop to be provided as per business requirement are mandatory (physical merchants) Inside photo of shop with stock to identify the business conducted by the merchant and / OR Only Outside photo of shop with display name and stock visible to identify business category.  Live photo of shop owner/authorised signatory is mandatory for validation with the photo on POI/POA. The photo of shop owner/authorised signatory to have water mark of date and time stamp along with LAT/LONG as per product design. 5. Constitution Document for Entity Merchants – Partnership / Limited Company / Private Company / Trust / LLP / HUF Document Type Documents issued in the name of Entity / Firm / Company Any one mandatory based on the constitution of entity Constitution Document (As per constitution)  For Partnership firm - Registered Partnership Deed  For Private / Public Limited Company: a) Memorandum of Association AND Articles of Association as per business requirement or case in hand the first and last 5 pages would be collected for basic information. b) Board of Resolution (To be signed by min 1 directors or Company Secretary or MD). KYC/ Signature proof of personnel signing to be collected as per requirement. c) Certificate of Incorporation  For Trust - Trust Deed as per business requirement or case in hand  For LLP - Certificate of Incorporation & Partnership Deed  For HUF - HUF deed  Company PAN Document Type Additional Optional Documents of Business Note  Merchant is not registered with GST and has provided PAN or Form 60.  Since list of acceptable documents are dynamic and might need to undergo change considering business requirements and applicable compliance,",
+    "source": "list_of_documents_for_sole_proprietorship_and-entity.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 512,
+    "metadata": {
+      "source_file": "list_of_documents_for_sole_proprietorship_and-entity.pdf",
+      "pages": 4,
+      "char_count": 5024,
+      "section_title": "Introduction",
+      "sub_chunk": 1
+    }
+  },
+  {
+    "chunk_id": 42,
+    "text": "Deed  For HUF - HUF deed  Company PAN Document Type Additional Optional Documents of Business Note  Merchant is not registered with GST and has provided PAN or Form 60.  Since list of acceptable documents are dynamic and might need to undergo change considering business requirements and applicable compliance, legal, risk and regulatory requirements. Authorisation Letter  Only required in case entity/firm authorise one or more persons as authorised signatory. Letter of authorisation is required granted by the authorised partners/managing bodies Financial Document – ANY ONE (Optional)  Audited Balance Sheet of Last Financial Year  Last 3 (Three) months company Bank Account Statement  Last 1 (One) Years GST Return / VAT / Income Tax Return",
+    "source": "list_of_documents_for_sole_proprietorship_and-entity.pdf",
+    "type": "pdf_section",
+    "chunk_method": "structural",
+    "section_title": "Introduction",
+    "max_tokens": 512,
+    "token_count": 156,
+    "metadata": {
+      "source_file": "list_of_documents_for_sole_proprietorship_and-entity.pdf",
+      "pages": 4,
+      "char_count": 5024,
+      "section_title": "Introduction",
+      "sub_chunk": 2
+    }
+  }
+]

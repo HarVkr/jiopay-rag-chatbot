@@ -1,0 +1,32 @@
+{
+  "BGE_Large": {
+    "recall_at_k": 1.5,
+    "mrr": 0.9333333333333332,
+    "avg_latency_ms": 52.80590057373047,
+    "num_queries": 10,
+    "embeddings_size_mb": 0.72265625,
+    "avg_embedding_time_ms": 72.09562868685336,
+    "model_size_mb": 1278.46484375,
+    "embedding_dimension": 1024
+  },
+  "E5_Large": {
+    "recall_at_k": 1.5666666666666667,
+    "mrr": 1.0,
+    "avg_latency_ms": 27.225303649902344,
+    "num_queries": 10,
+    "embeddings_size_mb": 0.72265625,
+    "avg_embedding_time_ms": 69.26611307505016,
+    "model_size_mb": 1278.46484375,
+    "embedding_dimension": 1024
+  },
+  "MiniLM_L6": {
+    "recall_at_k": 1.5,
+    "mrr": 0.95,
+    "avg_latency_ms": 5.518341064453125,
+    "num_queries": 10,
+    "embeddings_size_mb": 0.27099609375,
+    "avg_embedding_time_ms": 1.810305827372783,
+    "model_size_mb": 86.64404296875,
+    "embedding_dimension": 384
+  }
+}

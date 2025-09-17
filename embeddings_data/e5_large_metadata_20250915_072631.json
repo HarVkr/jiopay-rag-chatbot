@@ -1,0 +1,19 @@
+{
+  "model_name": "E5_Large",
+  "embedding_dimension": 1024,
+  "total_chunks": 185,
+  "embeddings_size_mb": 0.72265625,
+  "model_size_mb": 1278.46484375,
+  "model_parameters": 335141888,
+  "generation_time": 12.814230918884277,
+  "avg_time_per_embedding_ms": 69.26611307505016,
+  "timestamp": "20250915_072631",
+  "device_used": "cuda",
+  "chunk_method": "recursive",
+  "total_original_chunks": 185,
+  "embeddings_shape": [
+    185,
+    1024
+  ],
+  "embeddings_dtype": "float32"
+}
