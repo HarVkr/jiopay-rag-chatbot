@@ -1,11 +1,33 @@
 import { NextRequest } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { createClient } from "@supabase/supabase-js";
-import { pipeline, Pipeline, FeatureExtractionPipeline } from "@xenova/transformers";
-import { log } from "console";
+import { pipeline, FeatureExtractionPipeline } from "@xenova/transformers";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+
+// Define types for better type safety
+interface SearchResult {
+  searchType: string;
+  results: DatabaseChunk[];
+  count: number;
+  topic?: string | null;
+}
+
+interface DatabaseChunk {
+  id: number;
+  content: string;
+  source_file: string;
+  source_type: string;
+  topic: string;
+  faq_count?: number;
+  token_count?: number;
+  chunk_method?: string;
+  metadata?: Record<string, unknown>;
+  similarity?: number;
+}
+
+
 
 // Initialize Gemini AI
 const genai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
@@ -113,57 +135,57 @@ class JioPayRAGSearchRouter {
   async routeSearch(query: string, queryEmbedding: number[], maxResults: number = 8) {
     const analysis = this.analyzeQuery(query);
     
-    console.log(`🔍 Query Analysis:`, analysis);
+    console.log(`Query Analysis:`, analysis);
     
     try {
       // 1. PDF-specific search for policy/compliance questions
       if (analysis.isPdfQuery) {
-        console.log("📋 Using PDF-specific search for policy/compliance query");
+        console.log("Using PDF-specific search for policy/compliance query");
         const result = await this.pdfSearch(queryEmbedding, maxResults);
         if (result.count > 0) {
           return { ...result, topic: 'pdf_policy' };
         }
-        console.log("⚠️ No PDF results, falling back to comprehensive search");
+        console.log("No PDF results, falling back to comprehensive search");
       }
       
       // 2. Topic-specific search when topic is clearly identified
       if (analysis.detectedTopic) {
-        console.log(`🎯 Using topic-specific search for: ${analysis.detectedTopic}`);
+        console.log(`Using topic-specific search for: ${analysis.detectedTopic}`);
         const result = await this.topicSearch(queryEmbedding, analysis.detectedTopic, maxResults);
         if (result.count > 0) {
           return result;
         }
-        console.log("⚠️ No topic results, falling back to comprehensive search");
+        console.log("No topic results, falling back to comprehensive search");
       }
       
       // 3. Operational FAQ search for "how to" questions
       if (analysis.isOperationalFaq && !analysis.isPdfQuery) {
-        console.log("📚 Using FAQ-specific search for operational question");
+        console.log("Using FAQ-specific search for operational question");
         const result = await this.faqSearch(queryEmbedding, maxResults);
         if (result.count > 0) {
           return { ...result, topic: null };
         }
-        console.log("⚠️ No FAQ results, falling back to comprehensive search");
+        console.log("No FAQ results, falling back to comprehensive search");
       }
       
       // 4. Hybrid search for complex queries with exact terms
       if (analysis.isComplexQuery && analysis.hasExactTerms) {
-        console.log("🔀 Using hybrid search (semantic + keyword)");
+        console.log("Using hybrid search (semantic + keyword)");
         const result = await this.hybridSearch(queryEmbedding, query, maxResults);
         if (result.count > 0) {
           return { ...result, topic: null };
         }
-        console.log("⚠️ No hybrid results, falling back to comprehensive search");
+        console.log("No hybrid results, falling back to comprehensive search");
       }
       
       // 5. Comprehensive search (searches ALL content types)
-      console.log("🌐 Using comprehensive search across all content");
+      console.log("Using comprehensive search across all content");
       return await this.comprehensiveSearch(queryEmbedding, maxResults);
       
     } catch (error) {
-      console.error("❌ Search routing error:", error);
+      console.error("Search routing error:", error);
       // Final fallback to basic search
-      console.log("🔄 Fallback to basic semantic search");
+      console.log("Fallback to basic semantic search");
       const result = await this.basicSearch(queryEmbedding, maxResults);
       return { ...result, topic: null };
     }
@@ -256,7 +278,7 @@ class JioPayRAGSearchRouter {
 
     if (error) {
       // Fallback to filtering FAQ content
-      console.log("📚 Using fallback FAQ search");
+      console.log("Using fallback FAQ search");
       const { data: fallbackData, error: fallbackError } = await supabase
         .from('jiopay_chunks')
         .select('*')
@@ -347,7 +369,7 @@ async function initializeExtractor() {
   if (!extractor) {
     console.log("🔧 Initializing local sentence transformer pipeline...");
     extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
-    console.log("✅ Pipeline initialized successfully");
+    console.log("Pipeline initialized successfully");
   }
   return extractor;
 }
@@ -355,7 +377,7 @@ async function initializeExtractor() {
 // Replace your current getQueryEmbedding function with this:
 async function getQueryEmbedding(input: string): Promise<number[]> {
   try {
-    console.log("🔧 Generating embedding for:", input);
+    console.log("Generating embedding for:", input);
     
     // Initialize the pipeline if not already done
     const pipeline = await initializeExtractor();
@@ -369,8 +391,8 @@ async function getQueryEmbedding(input: string): Promise<number[]> {
     // Convert tensor to array
     const embedding = Array.from(output.data as Float32Array);
     
-    console.log("✅ Local embedding generated successfully");
-    console.log("🔍 Embedding dimension:", embedding.length);
+    console.log("Local embedding generated successfully");
+    console.log("Embedding dimension:", embedding.length);
     
     return embedding;
 
@@ -407,18 +429,18 @@ async function getQueryEmbedding(input: string): Promise<number[]> {
       
       if (Array.isArray(result) && result.length > 0) {
         const embedding = Array.isArray(result[0]) ? result[0] : result;
-        console.log("✅ Fallback API embedding successful");
+        console.log("Fallback API embedding successful");
         return embedding;
       } else {
         throw new Error("Unexpected API response format");
       }
 
     } catch (apiError) {
-      console.error("❌ API fallback also failed:", apiError);
+      console.error("API fallback also failed:", apiError);
       
       // Final fallback to local service if running
       try {
-        console.log("🔄 Trying final fallback to local service...");
+        console.log("Trying final fallback to local service...");
         const fallbackResponse = await fetch('http://localhost:5000/embed', {
           method: 'POST',
           headers: {
@@ -430,11 +452,11 @@ async function getQueryEmbedding(input: string): Promise<number[]> {
 
         if (fallbackResponse.ok) {
           const fallbackData = await fallbackResponse.json();
-          console.log("✅ Local service fallback successful");
+          console.log("Local service fallback successful");
           return fallbackData.embedding;
         }
       } catch (fallbackError) {
-        console.log("❌ All embedding methods failed");
+        console.log("All embedding methods failed");
       }
       
       throw error;
