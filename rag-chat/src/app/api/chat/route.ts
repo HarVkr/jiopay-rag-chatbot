@@ -6,11 +6,12 @@ import { pipeline, env, FeatureExtractionPipeline } from "@xenova/transformers";
 // Configure environment for serverless
 env.allowRemoteModels = true;
 env.allowLocalModels = false;
+env.backends.onnx.wasm.wasmPaths = "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.14.0/dist/";
 env.backends.onnx.wasm.numThreads = 1;
 
-export const runtime = "nodejs";
+
+export const runtime = "edge";
 export const dynamic = "force-dynamic";
-export const maxDuration = 30; // Increase timeout for model loading
 
 
 
@@ -375,8 +376,9 @@ async function initializeExtractor() {
   if (!extractor) {
     console.log("🔧 Initializing local sentence transformer pipeline...");
     extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', {
+      // revision: 'main',
+      // cache_dir: '/tmp/transformers_cache' // Use tmp directory in serverless
       revision: 'main',
-      cache_dir: '/tmp/transformers_cache' // Use tmp directory in serverless
     });
     console.log("Pipeline initialized successfully");
   }

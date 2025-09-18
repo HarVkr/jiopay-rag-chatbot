@@ -8,12 +8,16 @@
   ],
   "routes": [
     {
+      "src": "/rag-chat/api/(.*)",
+      "dest": "/rag-chat/api/$1"
+    },
+    {
       "src": "/api/(.*)",
-      "dest": "rag-chat/src/app/api/$1"
+      "dest": "/rag-chat/api/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "rag-chat/$1"
+      "dest": "/rag-chat/$1"
     }
   ]
 }
