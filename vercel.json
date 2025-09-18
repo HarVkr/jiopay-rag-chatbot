@@ -2,14 +2,10 @@
   "buildCommand": "cd rag-chat && npm run build",
   "outputDirectory": "rag-chat/.next",
   "installCommand": "cd rag-chat && npm ci",
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+  "framework": "nextjs",
+  "functions": {
+    "rag-chat/src/app/**/*.ts": {
+      "runtime": "nodejs18.x"
     }
-  ]
+  }
 }
