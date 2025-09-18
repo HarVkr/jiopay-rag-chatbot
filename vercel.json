@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cd rag_chat && npm run build",
-  "outputDirectory": "rag_chat/.next",
-  "installCommand": "cd rag_chat && npm ci",
+  "buildCommand": "cd rag-chat && npm run build",
+  "outputDirectory": "rag-chat/.next",
+  "installCommand": "cd rag-chat && npm ci",
   "rewrites": [
     {
       "source": "/(.*)",
