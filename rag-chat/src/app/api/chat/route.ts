@@ -1,10 +1,18 @@
 import { NextRequest } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { createClient } from "@supabase/supabase-js";
-import { pipeline, FeatureExtractionPipeline } from "@xenova/transformers";
+import { pipeline, env, FeatureExtractionPipeline } from "@xenova/transformers";
+
+// Configure environment for serverless
+env.allowRemoteModels = true;
+env.allowLocalModels = false;
+env.backends.onnx.wasm.numThreads = 1;
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 30; // Increase timeout for model loading
+
+
 
 // Define types for better type safety
 interface SearchResult {
@@ -366,7 +374,10 @@ let extractor: FeatureExtractionPipeline | null = null;
 async function initializeExtractor() {
   if (!extractor) {
     console.log("🔧 Initializing local sentence transformer pipeline...");
-    extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
+    extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', {
+      revision: 'main',
+      cache_dir: '/tmp/transformers_cache' // Use tmp directory in serverless
+    });
     console.log("Pipeline initialized successfully");
   }
   return extractor;
@@ -395,7 +406,7 @@ async function getQueryEmbedding(input: string): Promise<number[]> {
     return embedding;
 
   } catch (error) {
-    console.error("❌ Local embedding generation failed:", error);
+    console.error("Local embedding generation failed:", error);
     
     // Fallback to Hugging Face API
     try {
