@@ -1,7 +1,15 @@
 {
-  "buildCommand": "cd rag-chat && npm run build",
-  "outputDirectory": "rag-chat/.next",
-  "installCommand": "cd rag-chat && npm ci",
-  "framework": "nextjs",
-  "rootDirectory": "rag-chat"
+  "version": 2,
+  "builds": [
+    {
+      "src": "rag-chat/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "rag-chat/$1"
+    }
+  ]
 }
