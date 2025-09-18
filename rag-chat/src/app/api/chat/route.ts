@@ -209,7 +209,7 @@ class JioPayRAGSearchRouter {
     };
   }
 
-  async pdfSearch(queryEmbedding: number[], maxResults: number) {
+  async pdfSearch(queryEmbedding: number[], maxResults: number): Promise<SearchResult> {
     // Search specifically in PDF content
     const { data, error } = await supabase.rpc('match_documents', {
       query_embedding: queryEmbedding,
@@ -219,7 +219,7 @@ class JioPayRAGSearchRouter {
 
     if (!error && data) {
       // Filter PDF content from the results
-      const pdfResults = data.filter((item: any) => item.is_pdf === true);
+      const pdfResults = data.filter((item: DatabaseChunk & { is_pdf: boolean }) => item.is_pdf === true);
       return {
         searchType: 'pdf_specific',
         results: pdfResults || [],
@@ -230,13 +230,11 @@ class JioPayRAGSearchRouter {
     if (error) {
       // Fallback if RPC doesn't exist
       console.log("📄 Using fallback PDF search");
-      const { data: fallbackData, error: fallbackError } = await supabase
+      const { data: fallbackData } = await supabase
         .from('jiopay_chunks')
         .select('*')
         .eq('is_pdf', true)
         .limit(maxResults);
-      
-      if (fallbackError) throw fallbackError;
       
       return {
         searchType: 'pdf_fallback',
@@ -340,11 +338,11 @@ class JioPayRAGSearchRouter {
 // Initialize search router
 const searchRouter = new JioPayRAGSearchRouter();
 
-function buildJioPayContext(chunks: any[]): string {
+function buildJioPayContext(chunks: DatabaseChunk[]): string {
   if (!chunks || chunks.length === 0) return "";
 
   return chunks
-    .map((chunk: any, i: number) => {
+    .map((chunk: DatabaseChunk, i: number) => {
       const sourceType = chunk.source_type || 'unknown';
       const topic = chunk.topic || 'general';
       
@@ -455,7 +453,7 @@ async function getQueryEmbedding(input: string): Promise<number[]> {
           console.log("Local service fallback successful");
           return fallbackData.embedding;
         }
-      } catch (fallbackError) {
+      } catch {
         console.log("All embedding methods failed");
       }
       
@@ -528,7 +526,7 @@ Please provide a helpful answer based only on the above context:`;
     const answer = response.text();
 
     // 5. Prepare source information for transparency
-    const sources = searchResult.results.map((chunk: any, i: number) => ({
+    const sources = searchResult.results.map((chunk: DatabaseChunk, i: number) => ({
       id: i + 1,
       content: chunk.content,
       source_type: chunk.source_type,
@@ -547,12 +545,13 @@ Please provide a helpful answer based only on the above context:`;
       headers: { "content-type": "application/json" }
     });
 
-  } catch (err: any) {
-    console.error("❌ JioPay RAG API error:", err?.message || err);
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : String(err);
+    console.error("❌ JioPay RAG API error:", errorMessage);
     
     return new Response(JSON.stringify({ 
       error: "I'm experiencing technical difficulties. Please try again.",
-      details: process.env.NODE_ENV === 'development' ? err?.message : undefined
+      details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
     }), {
       status: 500,
       headers: { "content-type": "application/json" }

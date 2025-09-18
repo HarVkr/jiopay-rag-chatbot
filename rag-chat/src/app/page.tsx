@@ -3,15 +3,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Loader2, ExternalLink, X, FileText, MessageSquare, Hash, Copy, Check } from 'lucide-react';
 
-interface Message {
-  id: string;
-  content: string;
-  role: 'user' | 'assistant';
-  timestamp: string;
-  sources?: any[];
-  searchType?: string;
-}
-
 interface Source {
   id: number;
   content: string;
@@ -21,8 +12,17 @@ interface Source {
   metadata?: Record<string, unknown>;
 }
 
+interface Message {
+  id: string;
+  content: string;
+  role: 'user' | 'assistant';
+  timestamp: string;
+  sources?: Source[];
+  searchType?: string;
+}
+
 interface SourcePopupProps {
-  source: any;
+  source: Source | null;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -44,6 +44,7 @@ function SourcePopup({ source, isOpen, onClose }: SourcePopupProps) {
   };
 
   const handleCopy = async () => {
+    if (!source) return;
     try {
       await navigator.clipboard.writeText(source.content);
       setCopied(true);
@@ -59,6 +60,8 @@ function SourcePopup({ source, isOpen, onClose }: SourcePopupProps) {
       onClose();
     }
   };
+
+  if (!isOpen || !source) return null;
 
   return (
     <div 
@@ -149,7 +152,7 @@ export default function JioPayChatbot() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [selectedSource, setSelectedSource] = useState<any>(null);
+  const [selectedSource, setSelectedSource] = useState<Source | null>(null);
   const [isSourcePopupOpen, setIsSourcePopupOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -188,7 +191,7 @@ export default function JioPayChatbot() {
     });
   };
 
-  const handleSourceClick = (source: any) => {
+  const handleSourceClick = (source: Source) => {
     setSelectedSource(source);
     setIsSourcePopupOpen(true);
   };
@@ -233,7 +236,7 @@ export default function JioPayChatbot() {
       } else {
         throw new Error(data.error || 'Something went wrong');
       }
-    } catch (error) {
+    } catch {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         content: '❌ Sorry, I encountered an error. Please try again.',
