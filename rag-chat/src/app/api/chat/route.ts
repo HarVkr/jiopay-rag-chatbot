@@ -548,6 +548,7 @@ Please provide a helpful answer based only on the above context:`;
   } catch (err: unknown) {
     const errorMessage = err instanceof Error ? err.message : String(err);
     console.error("❌ JioPay RAG API error:", errorMessage);
+    console.log("❌ JioPay RAG API error:", errorMessage);
     
     return new Response(JSON.stringify({ 
       error: "I'm experiencing technical difficulties. Please try again.",

@@ -212,7 +212,7 @@ export default function JioPayChatbot() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch('/rag-chat/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
