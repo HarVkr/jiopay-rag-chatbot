@@ -1,13 +1,13 @@
 import { NextRequest } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { createClient } from "@supabase/supabase-js";
-import { pipeline, env, FeatureExtractionPipeline } from "@xenova/transformers";
+// import { pipeline, env, FeatureExtractionPipeline } from "@xenova/transformers";
 
 // Configure environment for serverless
-env.allowRemoteModels = true;
-env.allowLocalModels = false;
-env.backends.onnx.wasm.wasmPaths = "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.14.0/dist/";
-env.backends.onnx.wasm.numThreads = 1;
+// env.allowRemoteModels = true;
+// env.allowLocalModels = false;
+// env.backends.onnx.wasm.wasmPaths = "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.14.0/dist/";
+// env.backends.onnx.wasm.numThreads = 1;
 
 
 export const runtime = "edge";
@@ -370,111 +370,247 @@ function buildJioPayContext(chunks: DatabaseChunk[]): string {
 }
 
 // Create a global pipeline instance (initialize once)
-let extractor: FeatureExtractionPipeline | null = null;
+// let extractor: FeatureExtractionPipeline | null = null;
 
-async function initializeExtractor() {
-  if (!extractor) {
-    console.log("🔧 Initializing local sentence transformer pipeline...");
-    extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', {
-      // revision: 'main',
-      // cache_dir: '/tmp/transformers_cache' // Use tmp directory in serverless
-      revision: 'main',
-    });
-    console.log("Pipeline initialized successfully");
+// async function initializeExtractor() {
+//   if (!extractor) {
+//     console.log("🔧 Initializing local sentence transformer pipeline...");
+//     extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', {
+//       // revision: 'main',
+//       // cache_dir: '/tmp/transformers_cache' // Use tmp directory in serverless
+//       revision: 'main',
+//     });
+//     console.log("Pipeline initialized successfully");
+//   }
+//   return extractor;
+// }
+
+// WORKING function:
+// async function getQueryEmbedding(input: string): Promise<number[]> {
+//   try {
+//     console.log("Generating embedding for:", input);
+    
+//     // Initialize the pipeline if not already done
+//     const pipeline = await initializeExtractor();
+    
+//     // Generate embedding using local transformer
+//     const output = await pipeline(input, { 
+//       pooling: 'mean', 
+//       normalize: true 
+//     });
+    
+//     // Convert tensor to array
+//     // const embedding = Array.from(output.data as Float32Array);
+//     // Convert tensor to array - Edge runtime compatible
+//     const embedding = Array.from(output.data);
+    
+//     console.log("Local embedding generated successfully");
+//     console.log("Embedding dimension:", embedding.length);
+    
+//     return embedding;
+
+//   } catch (error) {
+//     console.error("Local embedding generation failed:", error);
+    
+//     // Fallback to Hugging Face API
+//     try {
+//       console.log("🔄 Trying fallback to Hugging Face API...");
+//       const response = await fetch(
+//         "https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2",
+//         {
+//           method: "POST",
+//           headers: {
+//             "Authorization": `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({ 
+//             inputs: input,
+//             options: {
+//               wait_for_model: true,
+//               use_cache: true
+//             }
+//           }),
+//         }
+//       );
+
+//       if (!response.ok) {
+//         const errorText = await response.text();
+//         throw new Error(`HF API error: ${response.status} - ${errorText}`);
+//       }
+
+//       const result = await response.json();
+      
+//       if (Array.isArray(result) && result.length > 0) {
+//         const embedding = Array.isArray(result[0]) ? result[0] : result;
+//         console.log("Fallback API embedding successful");
+//         return embedding;
+//       } else {
+//         throw new Error("Unexpected API response format");
+//       }
+
+//     } catch (apiError) {
+//       console.error("API fallback also failed:", apiError);
+      
+//       // Final fallback to local service if running
+//       try {
+//         console.log("Trying final fallback to local service...");
+//         const fallbackResponse = await fetch('http://localhost:5000/embed', {
+//           method: 'POST',
+//           headers: {
+//             'Content-Type': 'application/json',
+//           },
+//           body: JSON.stringify({ text: input }),
+//           signal: AbortSignal.timeout(5000)
+//         });
+
+//         if (fallbackResponse.ok) {
+//           const fallbackData = await fallbackResponse.json();
+//           console.log("Local service fallback successful");
+//           return fallbackData.embedding;
+//         }
+//       } catch {
+//         console.log("All embedding methods failed");
+//       }
+      
+//       throw error;
+//     }
+//   }
+// }
+
+
+// Simple in-memory cache (LRU-ish by size, not strict LRU)
+const EMBED_CACHE = new Map<string, number[]>();
+const EMBED_CACHE_MAX = 512;
+
+function cacheGet(key: string): number[] | undefined {
+  return EMBED_CACHE.get(key);
+}
+function cacheSet(key: string, value: number[]) {
+  if (EMBED_CACHE.size >= EMBED_CACHE_MAX) {
+    // delete first inserted key (simple eviction)
+    const firstKey = EMBED_CACHE.keys().next().value;
+    if (firstKey) EMBED_CACHE.delete(firstKey);
   }
-  return extractor;
+  EMBED_CACHE.set(key, value);
 }
 
-// Replace your current getQueryEmbedding function with this:
-async function getQueryEmbedding(input: string): Promise<number[]> {
-  try {
-    console.log("Generating embedding for:", input);
-    
-    // Initialize the pipeline if not already done
-    const pipeline = await initializeExtractor();
-    
-    // Generate embedding using local transformer
-    const output = await pipeline(input, { 
-      pooling: 'mean', 
-      normalize: true 
-    });
-    
-    // Convert tensor to array
-    // const embedding = Array.from(output.data as Float32Array);
-    // Convert tensor to array - Edge runtime compatible
-    const embedding = Array.from(output.data);
-    
-    console.log("Local embedding generated successfully");
-    console.log("Embedding dimension:", embedding.length);
-    
-    return embedding;
+function extractEmbeddingFromHFResponse(json: any): number[] | null {
+  // Common shapes:
+  // 1) [0.1, 0.2, ...]           -> direct embedding
+  // 2) [[0.1, 0.2, ...]]         -> when inputs was an array
+  // 3) [[[...]]]                 -> sometimes nested
+  // 4) { data: [ { embedding: [...] } ] }  -> some wrappers
+  if (!json) return null;
 
-  } catch (error) {
-    console.error("Local embedding generation failed:", error);
-    
-    // Fallback to Hugging Face API
-    try {
-      console.log("🔄 Trying fallback to Hugging Face API...");
-      const response = await fetch(
-        "https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2",
-        {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ 
-            inputs: input,
-            options: {
-              wait_for_model: true,
-              use_cache: true
-            }
-          }),
-        }
-      );
+  if (Array.isArray(json)) {
+    // direct numbers
+    if (json.length > 0 && typeof json[0] === "number") return json as number[];
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`HF API error: ${response.status} - ${errorText}`);
-      }
+    // [ [numbers], [numbers], ... ] -> return first
+    if (Array.isArray(json[0]) && typeof json[0][0] === "number") return json[0] as number[];
 
-      const result = await response.json();
-      
-      if (Array.isArray(result) && result.length > 0) {
-        const embedding = Array.isArray(result[0]) ? result[0] : result;
-        console.log("Fallback API embedding successful");
-        return embedding;
-      } else {
-        throw new Error("Unexpected API response format");
-      }
-
-    } catch (apiError) {
-      console.error("API fallback also failed:", apiError);
-      
-      // Final fallback to local service if running
-      try {
-        console.log("Trying final fallback to local service...");
-        const fallbackResponse = await fetch('http://localhost:5000/embed', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ text: input }),
-          signal: AbortSignal.timeout(5000)
-        });
-
-        if (fallbackResponse.ok) {
-          const fallbackData = await fallbackResponse.json();
-          console.log("Local service fallback successful");
-          return fallbackData.embedding;
-        }
-      } catch {
-        console.log("All embedding methods failed");
-      }
-      
-      throw error;
+    // deeper nested
+    if (Array.isArray(json[0]) && Array.isArray(json[0][0]) && typeof json[0][0][0] === "number") {
+      return json[0][0] as number[];
     }
   }
+
+  if (json.data && Array.isArray(json.data) && json.data.length > 0) {
+    // huggingface sometimes returns { data: [{ embedding: [...] }] }
+    if (Array.isArray(json.data[0].embedding)) return json.data[0].embedding as number[];
+    // or { data: [ [numbers] ] }
+    if (Array.isArray(json.data[0]) && typeof json.data[0][0] === "number") return json.data[0] as number[];
+  }
+
+  if (json.embedding && Array.isArray(json.embedding)) return json.embedding as number[];
+
+  return null;
+}
+
+async function getQueryEmbedding(input: string): Promise<number[]> {
+  if (!process.env.HUGGINGFACE_API_KEY) {
+    throw new Error("HUGGINGFACE_API_KEY is not set in environment variables");
+  }
+
+  const cacheKey = input.trim();
+  const cached = cacheGet(cacheKey);
+  if (cached) {
+    console.log("Using cached embedding");
+    return cached;
+  }
+
+  const modelId = "sentence-transformers/all-MiniLM-L6-v2";
+
+  // Preferred router endpoint (model owners have pinned usage to this)
+  const routerURL = `https://router.huggingface.co/hf-inference/models/${modelId}/pipeline/feature-extraction`;
+
+  // A couple fallbacks (some infra variations try these)
+  const apiPipelineURL = `https://api-inference.huggingface.co/models/${modelId}/pipeline/feature-extraction`;
+  const apiModelURL = `https://api-inference.huggingface.co/models/${modelId}`;
+
+  const endpoints = [routerURL, apiPipelineURL, apiModelURL];
+
+  let lastErr: unknown = null;
+  // total attempts across endpoints
+  for (const url of endpoints) {
+    // try 2 attempts per endpoint with backoff
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        console.log(`Trying HF endpoint: ${url} (attempt ${attempt + 1})`);
+        // For feature-extraction pipeline, prefer inputs as an array: { "inputs": ["text"] }
+        // For the generic model endpoint, some models accept { "inputs": "text" } as well.
+        const bodyCandidate = (url === apiModelURL)
+          ? JSON.stringify({ inputs: input, options: { wait_for_model: true } })
+          : JSON.stringify({ inputs: [input], options: { wait_for_model: true } });
+
+        const res = await fetch(url, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: bodyCandidate,
+        });
+
+        const text = await res.text();
+        // If non-JSON or error, we'll throw below
+        let parsed;
+        try { parsed = text ? JSON.parse(text) : null; } catch (e) { parsed = text; }
+
+        if (!res.ok) {
+          // Some HF errors contain helpful JSON like { error: "..." }
+          const errMsg = typeof parsed === "object" ? JSON.stringify(parsed) : String(parsed);
+          // If it's the 'sentences' error we saw, log an explicit hint
+          if (errMsg?.toLowerCase?.().includes("sentences")) {
+            console.warn("HF responded with a sentence-similarity error (model expects 'sentences' arg). Use the feature-extraction pipeline (router endpoint).");
+          }
+          throw new Error(`HF API error: ${res.status} - ${errMsg}`);
+        }
+
+        // parse embedding shapes
+        const embedding = extractEmbeddingFromHFResponse(parsed);
+        if (!embedding || embedding.length === 0) {
+          // Keep trying other endpoints / attempts
+          lastErr = new Error("HF response did not contain an embedding in expected formats");
+          console.warn("HF response parsed but no embedding found. Raw response:", parsed);
+        } else {
+          // Normalize numeric types to JS number[] if needed (they will be)
+          const floatEmbedding = embedding.map((v: any) => Number(v));
+          cacheSet(cacheKey, floatEmbedding);
+          console.log("HF embedding fetched, dim:", floatEmbedding.length);
+          return floatEmbedding;
+        }
+      } catch (err) {
+        lastErr = err;
+        // small backoff
+        const backoffMs = 300 * (attempt + 1);
+        console.warn(`HF attempt failed for ${url} (attempt ${attempt + 1}):`, err);
+        await new Promise((r) => setTimeout(r, backoffMs));
+      }
+    } // per-endpoint attempts
+  } // endpoints loop
+
+  throw new Error(`Failed to obtain embedding from Hugging Face after trying multiple endpoints. Last error: ${String(lastErr)}`);
 }
 
 
