@@ -400,7 +400,9 @@ async function getQueryEmbedding(input: string): Promise<number[]> {
     });
     
     // Convert tensor to array
-    const embedding = Array.from(output.data as Float32Array);
+    // const embedding = Array.from(output.data as Float32Array);
+    // Convert tensor to array - Edge runtime compatible
+    const embedding = Array.from(output.data);
     
     console.log("Local embedding generated successfully");
     console.log("Embedding dimension:", embedding.length);
